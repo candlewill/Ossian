@@ -3,7 +3,7 @@
 Ossian is a collection of Python code for building text-to-speech (TTS) systems, with an emphasis on easing research into building TTS systems with minimal expert supervision. Work on it started with funding from the [EU FP7 Project Simple4All](http://simple4all.org), and this repository contains a version which is considerable more up-to-date than that previously available. In particular, the original version of the toolkit relied on [HTS](http://hts.sp.nitech.ac.jp/) to perform acoustic modelling. Although it is still possible to use HTS, it now supports the use of neural nets trained with the [Merlin toolkit](https://github.com/CSTR-Edinburgh/merlin) as duration and acoustic models.  All
 comments and feedback about ways to improve it are very welcome.
 
-一些中文文档和总结可以发现于：[Chinese Ossian](https://gist.github.com/candlewill/8141bbe9d6c4c6224be8d3b4c07723eb).
+Here is some Chinese document. 一些中文文档和总结可以发现于：[Chinese Ossian Doc](https://gist.github.com/candlewill/8141bbe9d6c4c6224be8d3b4c07723eb).
 
 ## Python dependencies
 
@@ -104,11 +104,11 @@ ln -s $bin_dir bin
 Ossian expects its training data to be in the directories:
 
 ```
- ./corpus/<LANG>/speakers/<DATA_NAME>/txt/*.txt
- ./corpus/<LANG>/speakers/<DATA_NAME>/wav/*.wav
+ ./corpus/<OSSIAN_LANG>/speakers/<DATA_NAME>/txt/*.txt
+ ./corpus/<OSSIAN_LANG>/speakers/<DATA_NAME>/wav/*.wav
 ```
 
-Text and wave files should be numbered consistently with each other. ```<LANG>``` and ```<DATA_NAME>``` are both arbitrary strings, but it is sensible to choose ones which make obvious sense. 
+Text and wave files should be numbered consistently with each other. ```<OSSIAN_LANG>``` and ```<DATA_NAME>``` are both arbitrary strings, but it is sensible to choose ones which make obvious sense. 
 
 Download and unpack this toy (Romanian) corpus for some guidance:
 
@@ -135,16 +135,16 @@ Ossian trains voices according to a given 'recipe' -- the recipe specifies a seq
 
 The recipe ```naive_01_nn``` is a language independent recipe which naively uses letters as acoustic modelling units. It will work reasonably for languages with sensible orthographies (e.g. Romanian) and less well for e.g. English.
 
-Ossian will put all files generated during training on the data ```<DATA_NAME>``` in language ```<LANG>``` according to recipe ```<RECIPE>``` in a directory called:
+Ossian will put all files generated during training on the data ```<DATA_NAME>``` in language ```<OSSIAN_LANG>``` according to recipe ```<RECIPE>``` in a directory called:
 
 ```
- $OSSIAN/train/<LANG>/speakers/<DATA_NAME>/<RECIPE>/
+ $OSSIAN/train/<OSSIAN_LANG>/speakers/<DATA_NAME>/<RECIPE>/
 ```
 
 When if has successfully trained a voice, the components needed at synthesis are copied to:
 
 ```
- $OSSIAN/voices/<LANG>/<DATA_NAME>/<RECIPE>/
+ $OSSIAN/voices/<OSSIAN_LANG>/<DATA_NAME>/<RECIPE>/
 ```
 
 Assuming that we want to start by training a voice from scratch, we might want to check that these locations do not already exist for our combination of data/language/recipe:
