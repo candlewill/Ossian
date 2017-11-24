@@ -5,7 +5,9 @@ comments and feedback about ways to improve it are very welcome.
 
 一些中文文档和总结可以发现于：[Chinese Ossian](https://gist.github.com/candlewill/8141bbe9d6c4c6224be8d3b4c07723eb).
 
-# Python dependencies
+## Python dependencies
+
+**Python 2.7** is required.
 
 Use the ```pip``` package installer -- within a [Python ```virtualenv```](https://virtualenv.pypa.io/en/stable/) as necessary -- to get some necessary packages:
 
@@ -28,7 +30,7 @@ pip install matplotlib
 ```
 
 
-# Getting the tools
+## Getting the tools
 
 
 Clone the Ossian github repository as follows:
@@ -40,6 +42,8 @@ git clone https://github.com/CSTR-Edinburgh/Ossian.git
 This will create a directory called ```./Ossian```; 
 the following discussion assumes that an environment
 variable ```$OSSIAN``` is set to point to this directory.
+
+### Install from scratch
 
 Ossian relies on the [Hidden Markov Model Toolkit (HTK)](http://htk.eng.cam.ac.uk) and [HMM-based Speech Synthesis System (HTS)](http://hts.sp.nitech.ac.jp/)
 for alignment and (optionally) acoustic modelling -- here are some notes on obtaining and compiling the necessary tools. 
@@ -55,11 +59,47 @@ Running the following script will download and install the necessary tools (incl
 ./scripts/setup_tools.sh $HTK_USERNAME $HTK_PASSWORD
 ```
 
+The script `./scripts/setup_tools.sh` will do the following things:
+
+* clones down the Merlin repo to `$OSSIAN/tools/merlin`, and resets its head to `8aed278`
+* cd into the `merlin/tools/WORLD/` folder, and build it, then copy `analysis` and `synth` into `$OSSIAN/tools/bin/`:
+    ```shell
+    cd $OSSIAN/tools/merlin/tools/WORLD/
+    make -f makefile
+    make -f makefile analysis
+    make -f makefile synth
+    mkdir -p $OSSIAN/tools/bin/
+    cp $OSSIAN/tools/merlin/tools/WORLD/build/{analysis,synth} $OSSIAN/tools/bin/
+    ```
+* Download HTK, HDecode, HTS, and apply HTS patch. Build HTK, and install it to `$OSSIAN/tools/` folder.
+* Download hts-engine, and install it to `$OSSIAN/tools/`
+* Download SPTK, and install it to `$OSSIAN/tools/`
+* The `g2p-r1668-r3` and `corenlp-python` packages would be installed if you changed the value of `SEQUITUR`, `STANFORD` from 0 to 1.
+
+As all the tools are installed into `$OSSIAN/tools/` directory, the `$OSSIAN/tools/bin` directory would include all the binaries used by Ossian.
 
 
+### Install from pre-built
 
+If you have installed the above mentioned tools manually and don't want to install from scratch, you can make soft link to tell the Ossian where you have installed these tools.
 
-# Acquire some data
+```shell
+# 1 Mannuly clone the merlin repo
+# 2 Downlaod WORLD, HTK, HDecode, HTS, HTS-engine, SPTK, build and install.
+# 3 Copy all of the binaries into one folder. E.g., bin.
+
+# 3 Where is your merlin dir
+export merlin_dir=/home/dl80/heyunchao/Programs/Ossian/tools/merlin
+# 4 Where is the bin direcotry inculuding all the binaries
+export bin_dir=/home/dl80/heyunchao/Programs/Ossian/tools/bin
+
+# 5 Create soft link in your Ossian/tools direcotry
+cd /home/dl80/heyunchao/Programs/MyOssian_Github/tools
+ln -s $merlin_dir merlin
+ln -s $bin_dir bin
+```
+
+## Acquire some data
 
 Ossian expects its training data to be in the directories:
 
@@ -89,7 +129,7 @@ Let's start by building some voices on this tiny dataset. The results will sound
 
 You can download 1 hour sets of data in various languages we prepared here: http://tundra.simple4all.org/ssw8data.html
 
-# DNN-based voice using a naive recipe
+## DNN-based voice using a naive recipe
 
 Ossian trains voices according to a given 'recipe' -- the recipe specifies a sequence of processes which are applied to an utterance to turn it from text into speech, and is given in a file called ```$OSSIAN/recipes/<RECIPE>.cfg``` (where ```<RECIPE>``` is the name of a the specific recipe you are using). We will start with a recipe called ```naive_01_nn```. If you want to add components to the synthesiser, the best way to start will be to take the file for an existing recipe, copy it to a file with a new name and modify it.
 
@@ -179,20 +219,6 @@ In particular, you will want to increase training_epochs to train voices on larg
 You will also want to experiment with learning_rate, batch_size, and network architecture (hidden_layer_size, hidden_layer_type). Currently, Ossian only supports feed-forward networks.
 
 
+## Other recipes
 
-
-
-# Other recipes
-
-We have used many other recipes with Ossian which will be documented here when cleaned up enough to be useful to others. These will give the ability to add more  knowledge to the voices built, in the form of lexicons, letter-to-sound rules etc., and integrate existing trained components where they are available for the target language. 
-
-
-
-
-
-
-
-
-
-
-add instructions on adding more text
+We have used many other recipes with Ossian which will be documented here when cleaned up enough to be useful to others. These will give the ability to add more  knowledge to the voices built, in the form of lexicons, letter-to-sound rules etc., and integrate existing trained components where they are available for the target language.
