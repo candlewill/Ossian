@@ -103,7 +103,7 @@ def main_work():
     for line in fileinput.input(opts.files):
        line = line.decode('utf-8').rstrip()
        t = start_clock('Synthesise sentence')
-       print line
+       print line.encode("utf-8")
        if fileinput.isfirstline():
            if para != []:
                voice.synth_utterance(''.join(para), output_wavefile=output_wavefile, \

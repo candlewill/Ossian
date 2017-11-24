@@ -29,6 +29,11 @@ pip install theano
 pip install matplotlib
 ```
 
+We will use `sox` to process speech data:
+
+```
+apt-get install sox
+```
 
 ## Getting the tools
 
@@ -36,7 +41,7 @@ pip install matplotlib
 Clone the Ossian github repository as follows:
 
 ```
-git clone https://github.com/CSTR-Edinburgh/Ossian.git
+git clone https://github.com/candlewill/Ossian.git
 ```
 
 This will create a directory called ```./Ossian```; 
@@ -98,6 +103,8 @@ cd /home/dl80/heyunchao/Programs/MyOssian_Github/tools
 ln -s $merlin_dir merlin
 ln -s $bin_dir bin
 ```
+
+We provide a pre-built binary collection here [Ossian_required_bin.tar](https://cnbj1.fds.api.xiaomi.com/tts/ExternalLink/Github/Ossian_required_bin.tar.gz). Download and move to the `$bin_dir` directory, if someone doesn't want to build for scratch. 
 
 ## Acquire some data
 
