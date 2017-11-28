@@ -185,6 +185,10 @@ class FeatureDumper(SUtteranceProcessor):
     def filter_questions(self, corpus_questions):
         """
         Remove infrequent questions, which cover <  n% or > 100-n% of the training tokens.
+        筛选问题集，去掉低频项，仅保留出现次数在[self.question_filter_threshold， 100-self.question_filter_threshold]范围的问题项
+        :param corpus_questions: dict，每一项为一个问题，(key, value)=(question, count) 形如
+                                 (0, 'segment', u'_CJKUNIFIEDIDEOGRAPHSEVENAZEROB_'): 2
+        :return: 筛选后的问题集
         """
         if self.question_filter_threshold > 0:
             filtered = corpus_questions
@@ -200,13 +204,20 @@ class FeatureDumper(SUtteranceProcessor):
     def format_question_set(self, raw_questions, outfile):
         """
         Take raw_questions: list of (number, name, value) triplets, ...
-        
-        Write formatted questions to outfile, and human-readable key to outfile.key
-        
-        Additionally, write question file including continuous questions (CQS) for 
-        DNN training
-        """
 
+        Write formatted questions to outfile, and human-readable key to outfile.key
+
+        Additionally, write question file including continuous questions (CQS) for
+        DNN training
+        保存问题集
+
+        :param raw_questions: 问题列表，形如：[(0, 'segment', u'_CJKUNIFIEDIDEOGRAPHEIGHTZEROCE_'),
+                              (0, 'segment', u'_CJKUNIFIEDIDEOGRAPHFIVEDFFOUR_'),
+                              (0, 'segment', u'_CJKUNIFIEDIDEOGRAPHEIGHTFOURSEVENFIVE_'), ...]
+        :param outfile: 保存路径
+        :return: None
+        """
+        # 以(number, name)作为key，以value作为value
         unique_questions = {}
         for (number, name, value) in raw_questions:
             if (number, name) not in unique_questions:
