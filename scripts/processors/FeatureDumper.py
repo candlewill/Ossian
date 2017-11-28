@@ -209,7 +209,11 @@ class FeatureDumper(SUtteranceProcessor):
 
         Additionally, write question file including continuous questions (CQS) for
         DNN training
-        保存问题集
+        保存问题集，路径如下：
+            1. qlist保存到outfile
+            2. cont_qlist保存到outfile+".cont"
+            3. key_list保存到 outfile+".key"
+            4. values_list 保存到 outfile + ".values"
 
         :param raw_questions: 问题列表，形如：[(0, 'segment', u'_CJKUNIFIEDIDEOGRAPHEIGHTZEROCE_'),
                               (0, 'segment', u'_CJKUNIFIEDIDEOGRAPHFIVEDFFOUR_'),
