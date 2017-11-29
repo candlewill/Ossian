@@ -255,7 +255,7 @@ class WorldExtractor(SUtteranceProcessor):
         for (stream, dimen) in [('mgc', order + 1), ('bap', apsize), ('lf0', 1)]:
             comm = "perl %s/window.pl %s " % (script_dir, dimen)
             comm += "%s.%s %s > %s.%s.delta" % (outstem, stream, ' '.join(self.winfiles), outstem, stream)
-            success = os.system(comm)
+            success = os.system(comm) # This command is very slow
             if success != 0:
                 print 'delta (' + stream + ') extraction failed on utterance ' + utt.get("utterance_name")
                 return
