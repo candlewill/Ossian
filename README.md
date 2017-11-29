@@ -5,7 +5,9 @@ comments and feedback about ways to improve it are very welcome.
 
 Here is some Chinese document. 一些中文文档和总结可以发现于：[Chinese Ossian Doc](https://gist.github.com/candlewill/8141bbe9d6c4c6224be8d3b4c07723eb).
 
-## Python dependencies
+## Dependencies
+
+**Perl 5** is required.
 
 **Python 2.7** is required.
 

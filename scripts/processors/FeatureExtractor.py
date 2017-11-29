@@ -196,7 +196,7 @@ class WorldExtractor(SUtteranceProcessor):
 
         comm = "%s/analysis %s.wav %s.f0.double %s.sp.double %s.bap.double > %s.log" % (
             self.tool, outstem, outstem, outstem, outstem, outstem)
-        success = os.system(comm)
+        success = os.system(comm)  # This command is very slow
         # print comm
         if success != 0:
             print 'world analysis failed on utterance ' + utt.get("utterance_name")
@@ -214,7 +214,7 @@ class WorldExtractor(SUtteranceProcessor):
         comm = "%s/x2x +df %s.sp.double | %s/sopr -R -m 32768.0 | %s/mcep -a %s -m %s -l %s -j 0 -f 0.0 -q 3 > %s.mgc" % (
             self.tool, outstem, self.tool, self.tool, alpha, order, fftl, outstem)
         ## -e 1.0E-8
-        success = os.system(comm)
+        success = os.system(comm)  # This command is very slow
         if success != 0:
             print 'conversion of world spectrum to mel cepstra failed on utterance ' + utt.get("utterance_name")
             return
