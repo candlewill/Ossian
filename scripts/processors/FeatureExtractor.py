@@ -4,7 +4,7 @@
 ## Contact: Oliver Watts - owatts@staffmail.ed.ac.uk
 ## Contact: Antti Suni - Antti.Suni@helsinki.fi
 
-import math 
+import math
 import os
 import glob
 import numpy
@@ -15,7 +15,6 @@ from naive.naive_util import readlist, writelist, add_htk_header
 from UtteranceProcessor import SUtteranceProcessor
 import default.const as c
 
-
 ## Check required executables are available:
 from distutils.spawn import find_executable
 
@@ -23,36 +22,33 @@ required_executables = ['sox', 'perl']
 
 for executable in required_executables:
     if not find_executable(executable):
-        sys.exit('%s command line tool must be on system path '%(executable))
-    
-    
+        sys.exit('%s command line tool must be on system path ' % (executable))
+
 
 def get_world_fft_and_apdim(sample_rate):
     ## these are computed by World internally on the basis of sample rate
     ## and 2 constants set in src/world/constantnumbers.h 
     kFrequencyInterval = 3000.0
-    kUpperLimit = 15000.0  
-    apsize= int(min(kUpperLimit, (( sample_rate / 2.0) - kFrequencyInterval)) / kFrequencyInterval)
-    
+    kUpperLimit = 15000.0
+    apsize = int(min(kUpperLimit, ((sample_rate / 2.0) - kFrequencyInterval)) / kFrequencyInterval)
+
     ## replicate GetFFTSizeForCheapTrick in src/cheaptrick.cpp:
     kLog2 = 0.69314718055994529  # set in src/world/constantnumbers.h 
     f0_floor = 71.0  ## set in analysis.cpp
     fftl = math.pow(2.0, (1.0 + int(math.log(3.0 * sample_rate / f0_floor + 1) / kLog2)))
 
-    return(fftl, apsize)
+    return (fftl, apsize)
 
-          
-            
+
 class WorldExtractor(SUtteranceProcessor):
-
     '''
     doesn't subclass FeatureExtractor because no config template used
     '''
 
     def __init__(self, processor_name='world_extractor', input_filetype='wav', output_filetype='cmp', \
-                    coding_config={'order': 39, 'static_window': '1', 'delta_window': '-0.5 0.0 0.5', \
-                    'delta_delta_window': '1.0 -2.0 1.0'}, sample_rate=16000, alpha=0.42, mcep_order=39,
-                    frameshift_ms=5, resynthesise_training_data=False):  
+                 coding_config={'order': 39, 'static_window': '1', 'delta_window': '-0.5 0.0 0.5', \
+                                'delta_delta_window': '1.0 -2.0 1.0'}, sample_rate=16000, alpha=0.42, mcep_order=39,
+                 frameshift_ms=5, resynthesise_training_data=False):
 
         self.processor_name = processor_name
         self.input_filetype = input_filetype
@@ -60,16 +56,13 @@ class WorldExtractor(SUtteranceProcessor):
         self.coding_config = coding_config
         self.sample_rate = sample_rate
         self.rate = self.sample_rate
-        self.alpha=alpha
-        self.order=mcep_order
+        self.alpha = alpha
+        self.order = mcep_order
         self.frameshift_ms = frameshift_ms
         self.resynthesise_training_data = resynthesise_training_data
- 
 
         super(WorldExtractor, self).__init__()
 
-
-            
     def verify(self, voice_resources):
         self.voice_resources = voice_resources
 
@@ -78,33 +71,38 @@ class WorldExtractor(SUtteranceProcessor):
         for executable in required_executables:
             full_path = os.path.join(self.tool, executable)
             if not os.access(full_path, os.X_OK):
-                sys.exit('%s must exist and be executable to use WorldExtractor'%(full_path))
-            
-
+                sys.exit('%s must exist and be executable to use WorldExtractor' % (full_path))
 
     def do_training(self, speech_corpus, text_corpus):
+        """
+        "training" an extractor involves writing a config, and establishing the location of resources etc.
 
-        ## "training" an extractor involves writing a config, and establishing the location of resources etc.
+        Write also desciption of .cmp files in terms of streams, stream widths to be used by alignment and acoustic model
 
-        ## Write also desciption of .cmp files in terms of streams, stream widths to be used by alignment and acoustic model
-        self.acoustic_feats = self.get_location()+"/acoustic_feats.cfg"
+        完成以下事情：
+            1. 写入配置文件acoustic_feats.cfg
+            2. 写入.cmp文件
+        :param speech_corpus: Utterance列表
+        :param text_corpus: 文本列表
+        :return: None
+        """
+        self.acoustic_feats = self.get_location() + "/acoustic_feats.cfg"
         self.tool = self.voice_resources.get_path(c.BIN)
 
         for toolname in ['analysis', 'synth']:
             path = os.path.join(self.tool, toolname)
-            assert os.path.isfile(path), '%s does not exist'%(path)
-            assert os.access(path, os.X_OK), '%s is not executable'%(path)
+            assert os.path.isfile(path), '%s does not exist' % (path)
+            assert os.access(path, os.X_OK), '%s is not executable' % (path)
 
-           
         self.fftl, self.apsize = get_world_fft_and_apdim(self.sample_rate)
 
         # make acoustic modelling config
-        self.feats = ['mgc','lf0','bap']
-        
-        self.stream_sizes = [str(self.order+1),'1',str(self.apsize)]
-        weights = ['1','0','0']
-        msd = ['0','1','0']
-        floor_scale = ["0.01" for x in range (len(self.feats))]
+        self.feats = ['mgc', 'lf0', 'bap']
+
+        self.stream_sizes = [str(self.order + 1), '1', str(self.apsize)]
+        weights = ['1', '0', '0']
+        msd = ['0', '1', '0']
+        floor_scale = ["0.01" for x in range(len(self.feats))]
 
         streams = []
 
@@ -112,25 +110,27 @@ class WorldExtractor(SUtteranceProcessor):
         cur_stream_index = 1
         for i in range(len(self.feats)):
             if msd[i] == "1":
-                self.stream_sizes[i] +=" 1 1" 
-                weights[i] += " "+weights[i]+ " "+weights[i]
-                floor_scale[i] +=" "+floor_scale[i]+" "+floor_scale[i]
+                self.stream_sizes[i] += " 1 1"
+                weights[i] += " " + weights[i] + " " + weights[i]
+                floor_scale[i] += " " + floor_scale[i] + " " + floor_scale[i]
                 msd[i] = "1 1 1"
-                streams.append(str(cur_stream_index)+"-"+str(cur_stream_index+2))
-                cur_stream_index+=3
+                streams.append(str(cur_stream_index) + "-" + str(cur_stream_index + 2))
+                cur_stream_index += 3
             else:
                 streams.append(str(cur_stream_index))
-                cur_stream_index+=1
+                cur_stream_index += 1
 
         # save these for acoustic model training with cmps
         htk_feats = open(self.acoustic_feats, "w")
         htk_feats.write("STREAMS=\"%s\"\n" % " ".join(streams))
         htk_feats.write("STREAM_NAMES=\"%s\"\n" % " ".join(self.feats))
-        htk_feats.write("SHORT_STREAM_NAMES=\"1 2 5\"\n") #  % " ".join([str(i+1) for i in range(len(self.feats))]))     #      
+        htk_feats.write(
+            "SHORT_STREAM_NAMES=\"1 2 5\"\n")  # % " ".join([str(i+1) for i in range(len(self.feats))]))     #
         htk_feats.write("STATIC_STREAM_SIZES=\"%s\"\n" % " ".join(self.stream_sizes))
         htk_feats.write("MSD_STREAM_INFO=\"%s\"\n" % " ".join(msd))
         htk_feats.write("STREAM_WEIGHTS=\"%s\"\n" % " ".join(weights))
-        htk_feats.write("VFLOORSCALESTR=\"Vector %d %s\"\n" % (len(" ".join(self.stream_sizes).split())," ".join(floor_scale)))
+        htk_feats.write(
+            "VFLOORSCALESTR=\"Vector %d %s\"\n" % (len(" ".join(self.stream_sizes).split()), " ".join(floor_scale)))
         htk_feats.close()
 
         ## Make delta window coefficients in config file into separate files:
@@ -140,20 +140,19 @@ class WorldExtractor(SUtteranceProcessor):
             fname = os.path.join(training_dir, window + '.win')
             data = self.coding_config[window]
             length = len(data.strip().split())
-            data = '%s %s'%(length, data)
+            data = '%s %s' % (length, data)
             writelist([data], fname)
             self.winfiles.append(fname)
-        
 
     def process_utterance(self, utt):
-        
+
         ## If there is no waveform attached to the utt, don't do anything:        
         if not utt.has_attribute("waveform"):
-            return 
+            return
 
 
 
-        ## Add some data to the utt structure recording the structure of the 
+            ## Add some data to the utt structure recording the structure of the
         ## associated acoustic features we've produced. Do this first, in case
         ## we use existing features.
         self.stream_sizes[1] = '1'  ## otherwise '1 1 1' for F0    TODO: fix this nicely!
@@ -163,76 +162,80 @@ class WorldExtractor(SUtteranceProcessor):
         if utt.has_external_data(self.output_filetype):
             ##  TODO: check description against existing feats?
             return
-            
+
         ## else extract features
         infile = utt.get("waveform")
         outfile = utt.get_filename(self.output_filetype)
 
         ## strip suffix .cmp:-
         assert outfile.endswith('.' + self.output_filetype)
-        chars_to_strip = len(self.output_filetype)+1
+        chars_to_strip = len(self.output_filetype) + 1
         outstem = outfile[:-chars_to_strip]
 
-
         rate = self.rate
-        sample_rate=self.rate
-        alpha=self.alpha
-        order=self.order
-        fftl=self.fftl
-        apsize=self.apsize    
-        frameshift_ms=self.frameshift_ms 
+        sample_rate = self.rate
+        alpha = self.alpha
+        order = self.order
+        fftl = self.fftl
+        apsize = self.apsize
+        frameshift_ms = self.frameshift_ms
 
-        script_dir = self.voice_resources.path[c.SCRIPT]  
-        
+        script_dir = self.voice_resources.path[c.SCRIPT]
+
         ## 1) remove wave header, downsample etc. with sox:
         comm = "sox -t wav " + infile
         comm += " -c 1 -e signed-integer "
-        comm += " -r %s"%(rate)
-        comm += " -b 16 "  
+        comm += " -r %s" % (rate)
+        comm += " -b 16 "
         comm += " " + outstem + ".wav"
-        comm += " dither"   ## added for hi and rj data blizz 2014
+        comm += " dither"  ## added for hi and rj data blizz 2014
         success = os.system(comm)
         if success != 0:
             print 'sox failed on utterance ' + utt.get("utterance_name")
             return
-       
-        comm = "%s/analysis %s.wav %s.f0.double %s.sp.double %s.bap.double > %s.log"%(self.tool, outstem, outstem, outstem, outstem, outstem)
+
+        comm = "%s/analysis %s.wav %s.f0.double %s.sp.double %s.bap.double > %s.log" % (
+            self.tool, outstem, outstem, outstem, outstem, outstem)
         success = os.system(comm)
-        #print comm
+        # print comm
         if success != 0:
             print 'world analysis failed on utterance ' + utt.get("utterance_name")
             return
-       
+
         if self.resynthesise_training_data:
             ## resynthesis to test
-            comm = "%s/synth %s %s %s.f0.double %s.sp.double %s.bap.double %s.resyn.wav > %s.log"%(self.tool, fftl, rate, outstem, outstem, outstem, outstem, outstem)
+            comm = "%s/synth %s %s %s.f0.double %s.sp.double %s.bap.double %s.resyn.wav > %s.log" % (
+                self.tool, fftl, rate, outstem, outstem, outstem, outstem, outstem)
             success = os.system(comm)
             if success != 0:
                 print 'world synthesis failed on utterance ' + utt.get("utterance_name")
-                return       
-       
-        comm = "%s/x2x +df %s.sp.double | %s/sopr -R -m 32768.0 | %s/mcep -a %s -m %s -l %s -j 0 -f 0.0 -q 3 > %s.mgc"%(self.tool, outstem, self.tool, self.tool, alpha, order, fftl, outstem)
+                return
+
+        comm = "%s/x2x +df %s.sp.double | %s/sopr -R -m 32768.0 | %s/mcep -a %s -m %s -l %s -j 0 -f 0.0 -q 3 > %s.mgc" % (
+            self.tool, outstem, self.tool, self.tool, alpha, order, fftl, outstem)
         ## -e 1.0E-8
         success = os.system(comm)
         if success != 0:
             print 'conversion of world spectrum to mel cepstra failed on utterance ' + utt.get("utterance_name")
-            return    
-        
+            return
+
         for stream in ['bap']:
-            comm = "%s/x2x +df %s.%s.double > %s.%s"%(self.tool, outstem, stream, outstem, stream)
+            comm = "%s/x2x +df %s.%s.double > %s.%s" % (self.tool, outstem, stream, outstem, stream)
             success = os.system(comm)
             if success != 0:
-                print 'double -> float conversion (stream: '+stream+') failed on utterance ' + utt.get("utterance_name")
-                return    
+                print 'double -> float conversion (stream: ' + stream + ') failed on utterance ' + utt.get(
+                    "utterance_name")
+                return
 
         for stream in ['f0']:
-            comm = "%s/x2x +da %s.%s.double > %s.%s.txt"%(self.tool, outstem, stream, outstem, stream)
+            comm = "%s/x2x +da %s.%s.double > %s.%s.txt" % (self.tool, outstem, stream, outstem, stream)
             success = os.system(comm)
             if success != 0:
-                print 'double -> ascii conversion (stream: '+stream+') failed on utterance ' + utt.get("utterance_name")
-                return                        
-                    
-        ## 5) F0 conversion:
+                print 'double -> ascii conversion (stream: ' + stream + ') failed on utterance ' + utt.get(
+                    "utterance_name")
+                return
+
+                ## 5) F0 conversion:
         f0 = [float(val) for val in readlist(outstem + '.f0.txt')]
         log_f0 = []
         for val in f0:
@@ -241,44 +244,43 @@ class WorldExtractor(SUtteranceProcessor):
             else:
                 log_f0.append(math.log(val))
         writelist(log_f0, outstem + '.f0.log')
-        
-        comm = "%s/x2x +af %s.f0.log > %s.lf0"%(self.tool, outstem, outstem)
+
+        comm = "%s/x2x +af %s.f0.log > %s.lf0" % (self.tool, outstem, outstem)
         success = os.system(comm)
         if success != 0:
             print 'writing log f0 failed on utterance ' + utt.get("utterance_name")
             return
-            
+
         ## add mcep/ap/f0 deltas:
-        for (stream,dimen) in [('mgc', order+1), ('bap', apsize), ('lf0', 1)]:
-            comm = "perl %s/window.pl %s "%(script_dir, dimen)
-            comm += "%s.%s %s > %s.%s.delta"%(outstem, stream, ' '.join(self.winfiles), outstem, stream)
+        for (stream, dimen) in [('mgc', order + 1), ('bap', apsize), ('lf0', 1)]:
+            comm = "perl %s/window.pl %s " % (script_dir, dimen)
+            comm += "%s.%s %s > %s.%s.delta" % (outstem, stream, ' '.join(self.winfiles), outstem, stream)
             success = os.system(comm)
             if success != 0:
-                print 'delta ('+stream+') extraction failed on utterance ' + utt.get("utterance_name")
+                print 'delta (' + stream + ') extraction failed on utterance ' + utt.get("utterance_name")
                 return
-  
+
         ### combined streams:--        
-        ap = get_speech(outstem + '.bap.delta', apsize*len(self.winfiles))  
-        mgc = get_speech(outstem + '.mgc.delta', (order+1)*len(self.winfiles))     
-        lf0 = get_speech(outstem + '.lf0.delta', 1*len(self.winfiles))  
+        ap = get_speech(outstem + '.bap.delta', apsize * len(self.winfiles))
+        mgc = get_speech(outstem + '.mgc.delta', (order + 1) * len(self.winfiles))
+        lf0 = get_speech(outstem + '.lf0.delta', 1 * len(self.winfiles))
         cmp = numpy.hstack([mgc, lf0, ap])
         put_speech(cmp, outfile)
 
         ## 7) add header
-        floats_per_frame = (order+2 + apsize) * len(self.winfiles)    ## +2 for energy and F0
+        floats_per_frame = (order + 2 + apsize) * len(self.winfiles)  ## +2 for energy and F0
         add_htk_header(outfile, floats_per_frame, frameshift_ms)
-        
+
         ## 8) tidy:
-        self.extensions_to_keep = ['.'+self.output_filetype, '.f0.txt']   ## TODO: make configuable?
+        self.extensions_to_keep = ['.' + self.output_filetype, '.f0.txt']  ## TODO: make configuable?
         self.extensions_to_keep.append('.resyn.wav')
-        self.extensions_to_keep.extend(['.mgc','.bap','.lf0'])
-        
+        self.extensions_to_keep.extend(['.mgc', '.bap', '.lf0'])
+
         keepfiles = [outstem + ending for ending in self.extensions_to_keep]
-        
+
         for junk in glob.glob(outstem + '.*'):
             if not junk in keepfiles:
                 os.remove(junk)
-
 
 
 ####### TODO: revise other feature extractors ##########
