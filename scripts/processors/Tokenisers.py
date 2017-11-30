@@ -4,7 +4,7 @@
 ## Contact: Oliver Watts - owatts@staffmail.ed.ac.uk
 ## Contact: Antti Suni - Antti.Suni@helsinki.fi
 
-#from naive.naive_util import *
+# from naive.naive_util import *
 import unicodedata
 import glob
 from processors.UtteranceProcessor import SUtteranceProcessor, Element
@@ -12,13 +12,15 @@ from processors.UtteranceProcessor import SUtteranceProcessor, Element
 # from processors.NodeEnricher import *
 import datetime
 from naive import naive_util
+import sys
 
 try:
     import regex as new_regex
 except ImportError:
     sys.exit('Please install "regex": https://pypi.python.org/pypi/regex ')
-    
+
 import default.const as c
+
 
 class RegexTokeniser(SUtteranceProcessor):
     '''
@@ -34,14 +36,15 @@ class RegexTokeniser(SUtteranceProcessor):
 
     4. optionally add safetext representation
     '''
-    def __init__(self, processor_name='regex_tokeniser', target_nodes = '//utt', split_attribute = 'text', \
-                child_node_type = 'token', add_terminal_tokens=True, split_pattern='\s+', \
-                add_token_classes = True, \
-                class_patterns = [('space', '\A\s+\Z'), ('punctuation', '\A[\.\,\;\!\?\s]+\Z')], \
-                default_class = 'word', class_attribute='token_class',
-                add_safetext = True,
-                safetext_attribute = 'safetext', 
-                lowercase_safetext = True):
+
+    def __init__(self, processor_name='regex_tokeniser', target_nodes='//utt', split_attribute='text', \
+                 child_node_type='token', add_terminal_tokens=True, split_pattern='\s+', \
+                 add_token_classes=True, \
+                 class_patterns=[('space', '\A\s+\Z'), ('punctuation', '\A[\.\,\;\!\?\s]+\Z')], \
+                 default_class='word', class_attribute='token_class',
+                 add_safetext=True,
+                 safetext_attribute='safetext',
+                 lowercase_safetext=True):
 
         self.processor_name = processor_name
 
@@ -60,28 +63,27 @@ class RegexTokeniser(SUtteranceProcessor):
         self.lowercase_safetext = lowercase_safetext
 
         self.regex = new_regex.compile(self.split_pattern)
-        
-        super(RegexTokeniser, self).__init__()
 
+        super(RegexTokeniser, self).__init__()
 
     def process_utterance(self, utt):
 
-        #print 'target nodes: %s'%(utt.xpath(self.target_nodes))
+        # print 'target nodes: %s'%(utt.xpath(self.target_nodes))
         for node in utt.xpath(self.target_nodes):
             assert node.has_attribute(self.split_attribute)
             to_split = node.get(self.split_attribute)
-            
+
             child_chunks = self.splitting_function(to_split)
-            
+
             for chunk in child_chunks:
-                #print '=='
-                #print chunk
+                # print '=='
+                # print chunk
                 child = Element(self.child_node_type)
                 child.set(self.split_attribute, chunk)
 
                 if self.add_token_classes:
                     token_class = self.classify_token(chunk)
-                    #print token_class
+                    # print token_class
                     child.set(self.class_attribute, token_class)
 
                 if self.add_safetext:
@@ -91,6 +93,11 @@ class RegexTokeniser(SUtteranceProcessor):
                 node.add_child(child)
 
     def classify_token(self, token):
+        """
+        利用正则表达式，判断token属于中的什么类型，如果都不匹配，则返回默认类型
+        :param token: unicode字符串
+        :return: 这个字符串所属类型
+        """
 
         ## Special handling of terminal token:
         if token == c.TERMINAL:
@@ -102,6 +109,11 @@ class RegexTokeniser(SUtteranceProcessor):
         return self.default_class
 
     def safetext_token(self, instring):
+        """
+        把unicode串用一个唯一英文串表示，以方便之后处理
+        :param instring: unicode串
+        :return: 英文串
+        """
 
         ## Special handling of terminal token:
         if instring == c.TERMINAL:
@@ -110,17 +122,23 @@ class RegexTokeniser(SUtteranceProcessor):
             if self.lowercase_safetext == 'True':
                 return naive_util.safetext(instring.lower())
             else:
-                return naive_util.safetext(instring)        
+                return naive_util.safetext(instring)
 
     def splitting_function(self, instring):
+        """
+        利用正则表达式分词，注意，使用regex进行unicode匹配
+        输入一个字符串，输出分词后的结构
+        :param instring: 输入字符串
+        :return: 分词后的tokens
+        """
         tokens = self.regex.split(instring)
         tokens = [t for t in tokens if t != '']
         if self.add_terminal_tokens:
             tokens = [c.TERMINAL] + tokens + [c.TERMINAL]
-        return tokens 
-        
+        return tokens
+
     def do_training(self, speech_corpus, text_corpus):
-        print "RegexTokeniser requires no training"    
+        print "RegexTokeniser requires no training"
 
 
 '''
@@ -158,14 +176,14 @@ Code    Description
 [Zl]    Separator, Line
 [Zp]    Separator, Paragraph
 [Zs]    Separator, Space
-'''        
+'''
 
 # class SafeTextMaker(NodeEnricher):
 #     '''Lowercase, convert to ascii-safe strings, but handle terminal token specially'''
 #     def load(self):
 #         NodeEnricher.load(self)
 #         self.lowercase = self.config.get('lowercase', 'True')  ## string not bool
-    
+
 
 
 
@@ -183,40 +201,40 @@ Code    Description
 #     the node under output_attribute. If none are matched, default_class is assigned.'''
 #     def load(self):
 #         NodeEnricher.load(self)
-      
+
 #         if 'classes' not in self.config:
 #             sys.exit('Please specify classes for RegexClassifier')
 #         self.classes = self.config['classes']  
 #         if 'default_class' not in self.config:
 #             sys.exit('Please specify default_class for RegexClassifier')
 #         self.default_class = self.config.get('default_class')  
-    
+
 # #         token_classes = config_list(self.config.get('token_classes', ['space','not_space']))
 # #         token_class_patterns = config_list(self.config.get('token_class_patterns', ['\s+']))
 # #         print token_classes
 # #         print token_class_patterns
 # #         assert len(token_classes) == (len(token_class_patterns) + 1),'One more class must be \
 # #                                             given than patterns, as the default case'
-                                            
-                                            
+
+
 #         ## Compile on load, adding string-end symbols:
 #         self.class_patterns = [(name, new_regex.compile('\A%s\Z'%(string))) \
 #                 for (name, string) in self.classes.items()]
-    
+
 #     # def enriching_function(self, instring):
-        
+
+
+#     def do_training(self, speech_corpus, text_corpus):
+#         print "RegexTokeniser requires no training"    
+
 
 #     def do_training(self, speech_corpus, text_corpus):
 #         print "RegexTokeniser requires no training"    
 
 
-#     def do_training(self, speech_corpus, text_corpus):
-#         print "RegexTokeniser requires no training"    
-    
 
 
- 
-        # 
+#
 # class CharClassTokenClassifier(NodeEnricher):
 #     '''Classifies token based on list of classes and associated regular expresssions.'''
 #     def load(self):
@@ -290,10 +308,10 @@ Code    Description
 #     '''
 #     As CharPropTokeniser , but allow user to modify char classes by editing a character table
 #     '''
-        
-        
-        
-        
+
+
+
+
 # #     def __init__(self, table_file, character_class_precedence, \
 # #                 character_class_patterns, tokeniser_split_pattern):  
 # # 
@@ -338,7 +356,7 @@ Code    Description
 #                 ## handle tab replacements:
 #                 if "\\t" in lemma:
 #                     lemma = lemma.replace("\\t", "\t")
-                
+
 #                 self.table[lemma] = {}
 #                 for (key, value) in zip(header, line[1:]):
 #                     self.table[lemma][key] = value
@@ -408,11 +426,11 @@ Code    Description
 #                     print ".",
 #             f_in.close()
 #         f_out.close()
-        
 
 
 
-                                
+
+
 #     def train(self, text_list):
 #         '''
 #         Provided with a list of text files (a sample of the 
@@ -424,9 +442,9 @@ Code    Description
 #         '''
 
 #         assert len(text_list) > 0,"No transcriptions exist"
-        
+
 #         character_counts = {}
-        
+
 #         ## Count character types in text:
 #         #print "Learning character table..."
 #         i = 0
@@ -440,12 +458,12 @@ Code    Description
 #                     if character not in character_counts:
 #                         character_counts[character] = 0
 #                     character_counts[character] += 1    
-                   
+
 #         ## Precompute safetext and coarse categories, store in self.table:
 #         for (character, count) in character_counts.items():
-          
+
 #             self.add_to_table(character, frequency=count)
-     
+
 #         ## reload self to get regex patterns compiled:
 #         self.compile_regex()
 
@@ -488,7 +506,7 @@ Code    Description
 
 
 #     def alert_user(self):
-        
+
 #         print """
 #         Lists of letters and punctuation written to 
 #         %s and 
@@ -498,8 +516,8 @@ Code    Description
 #         HTK etc. compatible. Assume that all separators will be matched by
 #         regex \s -- i.e. don't list them explicitly.
 #         """%(letter_fname, punc_fname)
-            
-        
+
+
 #     def populate_unicode_category_map(self):
 #         '''
 #         Look at self.config['character_classes'] which contains coarse categories 
@@ -507,7 +525,7 @@ Code    Description
 #         make self.unicode_category_map, which  maps from all legal fine unicode
 #         categories to coarse category.
 #         '''
-        
+
 #         # For listing of unicode categories, see e.g. http://www.fileformat.info/info/unicode/category/index.htm
 #         unicode_categories = ['Cc', 'Cf', 'Cn', 'Co', 'Cs', 'LC', 'Ll', 'Lm', 'Lo', \
 #                               'Lt', 'Lu', 'Mc', 'Me', 'Mn', 'Nd', 'Nl', 'No', 'Pc', \
@@ -519,7 +537,7 @@ Code    Description
 #             for (coarse_class, regex) in self.character_classes.items():
 #                 if re.match(regex, code):
 #                     self.unicode_category_map[code] = coarse_class
-        
+
 
 
 #     def character_class(self, unicode_string):
@@ -528,7 +546,7 @@ Code    Description
 #         if it is a new character, look up category in unicodedata and convert to coarse 
 #         class. 
 #         '''
-        
+
 #         assert len(unicode_string) == 1,'''Method character_type can only be used on 
 #                                             single characters'''
 #         if unicode_string in self.table:
@@ -542,14 +560,14 @@ Code    Description
 #                 sys.exit(1)
 #             assert cclass in self.unicode_category_map,'Category %s not in map'%(cclass)
 #             return self.unicode_category_map[cclass]
-            
-            
+
+
 #     def token_class(self, unicode_string):
 #         '''
 #         Assign a class to a token (sequence of characters) based on the classes of its
 #         constituent characters.  character_class_precedence determines what the token's
 #         class will be. 
-        
+
 #         TODO: explain and motivate precedence.
 #         '''
 #         ## Get classes of letters in the token:
@@ -568,8 +586,8 @@ Code    Description
 #         return self.character_class_precedence[0] ## return arbitrary value
 
 
-            
-            
+
+
 #     def safetext(self, unicode_string):
 #         safetext = ''
 #         for char in unicode_string:
@@ -578,19 +596,19 @@ Code    Description
 #             else:
 #                 safetext += self.unicode_character_to_safetext(char)    
 #         return safetext
-        
+
 
 #     def unicode_character_to_safetext(self, char):
 #         '''
 #         Return value from self.table if it exists, otherwise work one out. The substitute 
 #         should be safe to use with applications of interest (e.g. in HTK modelnames), and
 #         a perhaps over-cautious subset of ASCII is used for this (uppercase A-Z).
-        
+
 #         TODO: [make this explanation complete]
-        
+
 #          To enable 
 #         reverse mapping, multicharacter safetexts are delimited with _. 
-        
+
 #         TODO: Simultaneously map to lowercase -- move this elsewhere? Optional? 
 #         '''
 #         ## Replacements to make greedily within unicode name:
@@ -627,14 +645,14 @@ Code    Description
 #         outdict = {}
 #         for char_class in self.character_class_precedence:
 #             outdict[char_class] = self.character_class_regex(char_class)
-            
+
 #         return outdict
 
 #     def character_class_regex(self, character_class):
 #         """
 #         Return a string that will be compiled into regex for matching 1 occurance of 
 #         any memeber of character_class (as given in character_class of self.table).
-        
+
 #         NOTE: this won't handle OOV characters --- they need to be added to table first.
 
 #         What would really be good here is proper unicode regular expressions (
@@ -657,5 +675,4 @@ Code    Description
 
 #         for (name, wildcard) in class_dict.items():       
 #             interpolated_regex = interpolated_regex.replace(unicode(name), wildcard)
-#         return interpolated_regex             
-
+#         return interpolated_regex
