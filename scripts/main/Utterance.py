@@ -133,7 +133,7 @@ class UtteranceElement(etree.ElementBase):
 ## See http://lxml.de/1.3/element_classes.html ---
 ## "If you use a parser at the module level, you can easily redirect a module 
 ## level Element() factory to the parser method by adding code like this:"
-MODULE_PARSER = etree.XMLParser(encoding="utf-8")
+MODULE_PARSER = etree.XMLParser()
 lookup = etree.ElementDefaultClassLookup(element=UtteranceElement)
 MODULE_PARSER.setElementClassLookup(lookup)
 Element = MODULE_PARSER.makeelement
