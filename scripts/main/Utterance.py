@@ -363,7 +363,7 @@ class Utterance(object):
         '''
         [Reroute to self.data]
         '''
-        print tostring(ElementTree(self.data), pretty_print=True)
+        print tostring(ElementTree(self.data), pretty_print=True, encoding="utf-8")
 
 
     def all_nodes(self):
