@@ -6,6 +6,14 @@
 from processors.UtteranceProcessor import SUtteranceProcessor, Element
 from naive import naive_util
 import default.const as c
+import sys
+
+try:
+    from processors.PronunciationVocab import PronunciationVocab
+
+    pinyin = PronunciationVocab()
+except:
+    print("Do not pinyin representation as Pronunciation")
 
 
 # import os
@@ -33,10 +41,12 @@ class NaivePhonetiser(SUtteranceProcessor):
     '''
     Add 'phonetic' segments consisting of standard orthography characters, converted into an ASCII-safe 'safetext' form
     '''
+
     def __init__(self, processor_name='naive_phonetiser', target_nodes="//token", \
-                target_attribute='text', child_node_type='segment', output_attribute='pronunciation', \
-                class_attribute='token_class', word_classes=['word'], probable_pause_classes=['punctuation', c.TERMINAL], \
-                possible_pause_classes=['space']):
+                 target_attribute='text', child_node_type='segment', output_attribute='pronunciation', \
+                 class_attribute='token_class', word_classes=['word'],
+                 probable_pause_classes=['punctuation', c.TERMINAL], \
+                 possible_pause_classes=['space'], use_pinyin=False):
 
         self.processor_name = processor_name
         self.target_nodes = target_nodes
@@ -45,8 +55,9 @@ class NaivePhonetiser(SUtteranceProcessor):
         self.output_attribute = output_attribute
         self.class_attribute = class_attribute
         self.word_classes = word_classes
-        self.probable_pause_classes = probable_pause_classes
-        self.possible_pause_classes = possible_pause_classes
+        self.probable_pause_classes = probable_pause_classes  # 很可能是停顿，停顿概率>=50%
+        self.possible_pause_classes = possible_pause_classes  # 有可能是停顿，停顿概率不为零
+        self.use_pinyin = use_pinyin
 
         super(NaivePhonetiser, self).__init__()
 
@@ -72,12 +83,18 @@ class NaivePhonetiser(SUtteranceProcessor):
                 node.add_child(child)
 
     def get_phonetic_segments(self, word):
+        """
+        获取单词word的发音表示
+        :param word: 一个单词
+        :return: 发音表示
+        """
         safetext_letters = []
-        for letter in list(word.lower()):
-            safetext_letters.append(naive_util.safetext(letter))
-        return safetext_letters
+        if self.use_pinyin:
+            return pinyin.look_up(word)
+        else:
+            for letter in list(word.lower()):
+                safetext_letters.append(naive_util.safetext(letter))
+            return safetext_letters
 
     def do_training(self, speech_corpus, text_corpus):
-        print "NaivePhonetiser requires no training"    
-
-
+        print "NaivePhonetiser requires no training"
