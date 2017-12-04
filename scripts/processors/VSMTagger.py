@@ -133,7 +133,12 @@ class VSMTagger(SUtteranceProcessor):
         self.trained = True
 
 
-    def _process_text_line(self, text):            
+    def _process_text_line(self, text):
+        """
+        处理一行文本
+        :param text: 一行文本
+        :return: 处理后的文本
+        """
 
         split_text = [token for token in new_regex.split(self.tokenisation_pattern, text) \
                             if token != '']
