@@ -21,6 +21,9 @@ import util.Environment
 from argparse import ArgumentParser
 import logging
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 logging.basicConfig()  ##level=logging.DEBUG
 
 
