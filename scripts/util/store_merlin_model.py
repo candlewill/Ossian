@@ -24,7 +24,7 @@ import theano
 
 from utils.providers import ListDataProvider
 
-from frontend.label_normalisation import HTSLabelNormalisation, HTSDurationLabelNormalisation, XMLLabelNormalisation
+from frontend.label_normalisation import HTSLabelNormalisation, HTSDurationLabelNormalisation
 from frontend.silence_remover import SilenceRemover
 from frontend.silence_remover import trim_silence
 from frontend.min_max_norm import MinMaxNormalisation
