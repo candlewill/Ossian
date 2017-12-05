@@ -39,7 +39,7 @@ class PronunciationVocab(object):
             "6": "SIX"}
         for key in name_reps.keys():
             word = word.replace(key, name_reps[key])
-        return word
+        return "_" + word + "_"
 
 
 if __name__ == '__main__':
