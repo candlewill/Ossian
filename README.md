@@ -228,6 +228,27 @@ In particular, you will want to increase training_epochs to train voices on larg
 You will also want to experiment with learning_rate, batch_size, and network architecture (hidden_layer_size, hidden_layer_type). Currently, Ossian only supports feed-forward networks.
 
 
+## Latest Merlin Repo
+
+If you want to use the latest merlin repo, it is possible now. However, when export model some `files no exist` error would occurs. You could manually copy the corresponding files to the right folder to deal with it. These files are existed after training, but not in the right directory. You could use `find -name *.dat` to find where they are.
+
+Here is a example:
+
+```shell
+# Duration model
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_ACOUST/inter_module/norm_info__mgc_lf0_vuv_bap_187_MVN.dat /root/Ossian/train/cn/speakers/toy_cn_corpus/naive_01_nn.cn//cmp//norm_info_mgc_lf0_vuv_bap_187_MVN.dat
+
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_ACOUST/inter_module/label_norm_HTS_3491.dat /root/Ossian/train/cn/speakers/toy_cn_corpus/naive_01_nn.cn//cmp//label_norm_HTS_3491.dat
+
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_ACOUST/nnets_model/feed_forward_6_tanh.model /root/Ossian/train/cn/speakers/toy_cn_corpus/naive_01_nn.cn//dnn_training_ACOUST//nnets_model/DNN_TANH_TANH_TANH_TANH_TANH_TANH_LINEAR__mgc_lf0_vuv_bap_0_6_1024_1024_1024_1024_1024_1024_3491.187.train.243.0.002000.rnn.model
+
+# Acoustic model
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_DUR/inter_module/norm_info__dur_5_MVN.dat /root/Ossian/train/cn/speakers/toy_cn_corpus/naive_01_nn.cn///norm_info_dur_5_MVN.dat
+
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_DUR/inter_module/label_norm_HTS_3482.dat /root/Ossian/train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/
+...
+```
+
 ## Other recipes
 
 We have used many other recipes with Ossian which will be documented here when cleaned up enough to be useful to others. These will give the ability to add more  knowledge to the voices built, in the form of lexicons, letter-to-sound rules etc., and integrate existing trained components where they are available for the target language.
