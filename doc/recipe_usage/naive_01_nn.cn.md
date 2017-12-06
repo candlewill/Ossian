@@ -40,3 +40,13 @@ mkdir -p $OSSIAN/test/wav/
 python ./scripts/speak.py -l $OSSIAN_LANG -s $DATA_NAME -o ./test/wav/${OSSIAN_LANG}_${DATA_NAME}_test.wav $RECIPE ./test/txt/test.txt
 ```
 
+### Edit config file
+
+Edit the config file as appropriate and use for training with Merlin. Its existing path (just for example) is: 
+
+```shell
+/root/Ossian/train//cn/speakers/king_cn_corpus/naive_01_nn.cn/processors/duration_predictor/config.cfg
+/root/Ossian/train//cn/speakers/king_cn_corpus/naive_01_nn.cn/processors/acoustic_predictor/config.cfg
+```
+
+You would want to increase training_epochs to train real voices. You would also want to experiment with learning_rate, batch_size, hidden_layer_size, hidden_layer_type. 

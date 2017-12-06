@@ -251,4 +251,15 @@ cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_DUR/inter_modul
 
 ## Other recipes
 
-We have used many other recipes with Ossian which will be documented here when cleaned up enough to be useful to others. These will give the ability to add more  knowledge to the voices built, in the form of lexicons, letter-to-sound rules etc., and integrate existing trained components where they are available for the target language.
+We have used many other recipes with Ossian which will be documented here when cleaned up enough to be useful to others. These will give the ability to add more  knowledge to the voices built, in the form of lexicons, letter-to-sound rules etc., and integrate existing trained components where they are available for the target language. Some of them could be found here:
+
+1. [Chinese Text-to-Speech recipe](./doc/recipe_usage/naive_01_nn.cn.md)
+
+## Announcement
+
+This project is based on the [CSTR-Edinburgh/Ossian](https://github.com/CSTR-Edinburgh/Ossian). All copyright is belonging to the original project.
+
+[Yunchao He](https://weibo.com/heyunchao)
+
+yunchaohe@gmail.com
+
