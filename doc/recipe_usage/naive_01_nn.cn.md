@@ -28,7 +28,6 @@ python ./scripts/train.py -s $DATA_NAME -l $OSSIAN_LANG $RECIPE -c
 
 # Merlin Training
 export THEANO_FLAGS=""; python ./tools/merlin/src/run_merlin.py $OSSIAN/train/$OSSIAN_LANG/speakers/$DATA_NAME/$RECIPE/processors/duration_predictor/config.cfg
-# Export Merlin duration model
 export THEANO_FLAGS=""; python ./tools/merlin/src/run_merlin.py $OSSIAN/train/$OSSIAN_LANG/speakers/$DATA_NAME/$RECIPE/processors/acoustic_predictor/config.cfg
 
 # Export Model
@@ -50,3 +49,18 @@ Edit the config file as appropriate and use for training with Merlin. Its existi
 ```
 
 You would want to increase training_epochs to train real voices. You would also want to experiment with learning_rate, batch_size, hidden_layer_size, hidden_layer_type. 
+
+Particularly, in my case, I changed the following values:
+
+```python
+# Duration config
+batch_size       : 32
+training_epochs  : 30
+
+buffer_size: 100000
+
+# Acoustic config
+batch_size       : 32
+training_epochs  : 30
+```
+
