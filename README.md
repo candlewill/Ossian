@@ -227,6 +227,56 @@ The configuration files used for duration and acoustic model training will work 
 In particular, you will want to increase training_epochs to train voices on larger amounts of data; this could be set to e.g. 30 for the acoustic model and e.g. 100 for the duration model.
 You will also want to experiment with learning_rate, batch_size, and network architecture (hidden_layer_size, hidden_layer_type). Currently, Ossian only supports feed-forward networks.
 
+## Synthesis
+
+The command to synthesis new wave given text as input is:
+
+```shell
+python ./scripts/speak.py -l $OSSIAN_LANG -s $DATA_NAME -o ./test/wav/${OSSIAN_LANG}_${DATA_NAME}_test.wav $RECIPE ./test/txt/test.txt
+```
+
+Where `./test/wav/${OSSIAN_LANG}_${DATA_NAME}_test.wav` and `$RECIPE ./test/txt/test.txt` are the synthesized wave and input text. 
+
+The complete usage of `speak.py` is:
+
+```shell
+usage: speak.py [-h] -s SPEAKER -l LANG [-o OUTPUT] [-t STAGE] [-play] [-lab]
+                [-bin CUSTOM_BINDIR]
+                config [files [files ...]]
+
+positional arguments:
+  config              configuration to use: naive, semi-naive, gold, as
+                      defined in <ROOT>/recipes/<config> -directory
+  files               text files to speak, reading from stdin by default
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -s SPEAKER          the name of the speaker: <ROOT>/corpus/<LANG>/<SPEAKER>
+  -l LANG             the language of the speaker: <ROOT>/corpus/<LANG>
+  -o OUTPUT           output audio here
+  -t STAGE            defines the current usage stage (definitions of stages
+                      should by found in <config>/recipe.cfg
+  -play               play audio after synthesis
+  -lab                make label file as well as wave in output location
+  -bin CUSTOM_BINDIR
+```
+
+If you want to export your `pre-trained` model, you should pack up the following files:
+
+1. `voice/` 
+2. `train/cn/speakers/king_cn_corpus/naive_01_nn.cn/questions_dur.hed.cont`
+3. `train/cn/speakers/king_cn_corpus/naive_01_nn.cn/questions_dur.hed`
+4. `train//cn/speakers/king_cn_corpus/naive_01_nn.cn/questions_dnn.hed.cont`
+
+Then, after you put them to the right directory, someone else could use your model to synthesis given text.
+
+##Pre-trained Model
+
+Here, We provide a simple pre-trained model for Chinese TTS. As the model is trained on a limited small inner corpus for testing, the quality of the synthesized voice is not very good. 
+
+Simple Pre-trained Chinese Model: [Ossian_cn_pretrained_model.tar.gz](https://cnbj1.fds.api.xiaomi.com/tts/ExternalLink/Github/Ossian_cn_pretrained_model.tar.gz)
+
+Some samples generated from this model could be found here: [Ossian_Chinese_samples](https://cnbj1.fds.api.xiaomi.com/tts/ExternalLink/Github/Ossian_Chinese_samples.zip)
 
 ## Latest Merlin Repo
 
