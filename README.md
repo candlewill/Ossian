@@ -276,7 +276,7 @@ Here, We provide a simple pre-trained model for Chinese TTS. As the model is tra
 
 Simple Pre-trained Chinese Model: [Ossian_cn_pretrained_model.tar.gz](https://cnbj1.fds.api.xiaomi.com/tts/ExternalLink/Github/Ossian_cn_pretrained_model.tar.gz)
 
-Some samples generated from this model could be found here: [Ossian_Chinese_samples](https://cnbj1.fds.api.xiaomi.com/tts/ExternalLink/Github/Ossian_Chinese_samples.zip)
+Some samples generated from this model could be found here: [Ossian_Chinese_samples.zip](https://cnbj1.fds.api.xiaomi.com/tts/ExternalLink/Github/Ossian_Chinese_samples.zip)
 
 ## Latest Merlin Repo
 
