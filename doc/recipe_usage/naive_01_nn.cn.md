@@ -64,3 +64,16 @@ batch_size       : 32
 training_epochs  : 30
 ```
 
+### Synthesis Multiple Texts
+
+```shell
+ls ./test/txt/pre/ | head -10 | while read line; do python ./scripts/speak.py -l $OSSIAN_LANG -s $DATA_NAME -o ./test/wav/${line}.wav $RECIPE ./test/txt/pre/$line; done
+
+ls ./test/txt/ext_0000*.txt | head -10 | while read line; do python ./scripts/speak.py -l $OSSIAN_LANG -s $DATA_NAME -o ${line}.wav $RECIPE $line; done
+```
+#### 导出模型需要用到的几个文件
+
+```
+tar zcvf acoustic_model.tar.gz train/cn/speakers/king_cn_corpus/naive_01_nn.cn/dnn_training_ACOUST/nnets_model/feed_forward_6_tanh.model train/cn/speakers/king_cn_corpus/naive_01_nn.cn/dnn_training_ACOUST/inter_module/norm_info__mgc_lf0_vuv_bap_187_MVN.dat train/cn/speakers/king_cn_corpus/naive_01_nn.cn/dnn_training_ACOUST/inter_module/label_norm_HTS_6125.dat
+```
+
