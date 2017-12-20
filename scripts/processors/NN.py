@@ -4,8 +4,6 @@
 ## Contact: Oliver Watts - owatts@staffmail.ed.ac.uk
 
 
-
-
 from UtteranceProcessor import SUtteranceProcessor
 from util.NodeProcessors import *
 
@@ -25,6 +23,7 @@ import glob
 
 import util.Wavelets as cwt
 import util.cwt_utils
+import tensorflow as tf
 
 ### Add Merlin tools to import path:-
 this_file_location = os.path.split(os.path.realpath(os.path.abspath(os.path.dirname(__file__))))[0]
@@ -32,6 +31,7 @@ merlin_direc = os.path.join(this_file_location, '..', 'tools', 'merlin', 'src')
 sys.path.append(merlin_direc)
 
 from processors.FeatureExtractor import get_world_fft_and_apdim
+from processors import data_utils
 
 try:
     from frontend.label_normalisation import HTSLabelNormalisation, HTSDurationLabelNormalisation
@@ -41,107 +41,40 @@ except:
 
 
 class NN(object):
-    def __init__(self, model_dir):
+    def __init__(self, model_dir, inp_dim, out_dim):
+        self.inp_dim = inp_dim
+        self.out_dim = 5
         self.load_from_files(model_dir)
 
     def load_from_files(self, model_dir):
         self.model_dir = model_dir
-        files = glob.glob(self.model_dir + '/*')
-        # print 'files in ' + self.model_dir
-        # print files
-
-        norm_count = 0
-
-        self.layers = {}
-
-        # print files
-
-        for file in files:
-            junk, base = os.path.split(file)
-            base = base.replace('.npy', '')
-            if base.startswith('LAYER'):  ## LAYER_001_TANH_b.npy
-
-                junk, number, ltype, part = base.split('_')
-                number = int(number)
-                weights = numpy.load(file)
-                if number not in self.layers:
-                    self.layers[number] = {}
-                self.layers[number][part] = weights
-                self.layers[number]['activation'] = ltype
-
-            if base == 'NORM_OUTPUT_MEAN':
-                self.output_mean = numpy.load(file)
-                norm_count += 1
-
-            if base == 'NORM_OUTPUT_STD':
-                self.output_std = numpy.load(file)
-                norm_count += 1
-
-            if base == 'NORM_INPUT_MIN':
-                self.input_min = numpy.load(file)
-                norm_count += 1
-
-            if base == 'NORM_INPUT_MAX':
-                self.input_max = numpy.load(file)
-                norm_count += 1
-
-        assert norm_count == 4
-        self.indim = numpy.shape(self.input_min)[0]
-        self.outdim = numpy.shape(self.output_mean)[0]
-
-        self.target_max = 0.99
-        self.target_min = 0.01
-        target_diff = self.target_max - self.target_min
-        target_diff_vect = numpy.ones(numpy.shape(self.input_min)) * target_diff
-        data_diff_vect = self.input_max - self.input_min
-
-        target_diff_vect[data_diff_vect <= 0.0] = 1.0
-        data_diff_vect[data_diff_vect <= 0.0] = 1.0
-
-        self.scale_vector = target_diff_vect / data_diff_vect
-
-        # linearly rescale data values having observed min and max into a new arbitrary range min' to max':
-        # newvalue= (max'-min')/(max-min)*(value-max)+max'
-        # or
-        # newvalue= (max'-min')/(max-min)*(value-min)+min'.
+        self.sess = tf.Session()
+        new_saver = tf.train.import_meta_graph(os.path.join(model_dir, "TF_Model.ckpt.meta"))
+        print("loading the model parameters...")
+        new_saver.restore(self.sess, os.path.join(model_dir, "TF_Model.ckpt"))
+        print("The model parameters are successfully restored")
+        self.inp_scaler = data_utils.load_norm_stats(os.path.join(model_dir, "input_249_MINMAX_425.norm"), self.inp_dim,
+                                                     method="MINMAX")
+        self.out_scaler = data_utils.load_norm_stats(os.path.join(model_dir, "output_249_MINMAX_187.norm"),
+                                                     self.out_dim, method="MINMAX")
 
     def predict(self, input, input_normalisation=True, output_denormalisation=True):
         nframe, ndim = numpy.shape(input)
-        assert ndim == self.indim, (ndim, self.indim)
+        print("The input shape is %s X %s" % (nframe, ndim))
 
         if input_normalisation:
             ## normalise:
-            input = input - self.input_min
-            input = input * self.scale_vector
-            input = input + self.target_min
+            data_utils.norm_data(input, self.inp_scaler)
 
-        # put_speech(input, '/afs/inf.ed.ac.uk/user/o/owatts/temp/cpu_gen/binlab_OSSIANnorm_66_015.cmpFIXED2')
-        #         print '/afs/inf.ed.ac.uk/user/o/owatts/temp/cpu_gen/binlab_OSSIANnorm_66_015.cmpFIXED2'
-        #         sys.exit('vliadnviadnvdvn 3 stoped early')
-        #
-        #
-        #
-        for (i, layer) in sorted(self.layers.items()):
-            print i
-            input = numpy.dot(input, layer['W'])
-            input += layer['b']
-            if layer['activation'] == 'TANH':
-                input = numpy.tanh(input)
-            elif layer['activation'] == 'LINEAR':
-                pass
-            else:
-                sys.exit('unknown activation: %s' % (layer['activation']))
+        output_layer = tf.get_collection("output_layer")[0]
+        input_layer = tf.get_collection("input_layer")[0]
+        is_training_batch = tf.get_collection("is_training_batch")[0]
+        y_predict = self.sess.run(output_layer,
+                                  feed_dict={input_layer: input, is_training_batch: False})
 
-                #
-                #         put_speech(input, '/afs/inf.ed.ac.uk/user/o/owatts/temp/cpu_gen/undenorm_66_015B.cmp')
-                #         sys.exit('vliadnviadnvdvn stoped early 888')
-                #
-                #
-        if output_denormalisation:
-            output = input * self.output_std + self.output_mean
-        else:
-            output = input
-        return output
+        y_predict = data_utils.denorm_data(y_predict, self.out_scaler)
+
+        return y_predict
 
 
 class NNAcousticModel(NN):
@@ -333,11 +266,6 @@ class NNAcousticModel(NN):
 
     #    def expand_label():
 
-
-
-
-
-
     def simple_scale_variance_wrapper_0(self, speech, stream):
 
         return speech
@@ -448,9 +376,9 @@ class NNAcousticModel(NN):
 class NNDurationModel(NN):
     ## assume single stream, with 1 output = with n elements for n states of 1 phone
     def __init__(self, model_dir, question_file_name):
-        super(NNDurationModel, self).__init__(model_dir)
-        # self.label_expander = HTSLabelNormalisation(question_file_name=question_file_name, add_frame_features=False, subphone_feats='none') # , label_type='phone_align')
         self.label_expander = HTSDurationLabelNormalisation(question_file_name=question_file_name)
+        # self.label_expander = HTSLabelNormalisation(question_file_name=question_file_name, add_frame_features=False, subphone_feats='none') # , label_type='phone_align')
+        super(NNDurationModel, self).__init__(model_dir, self.label_expander.dimension)
 
     def generate(self, htk_label_file, enforce_silence=False, mlpg=True, vuv_thresh=0.5, fzero_scale=1.0):
         input = self.label_expander.load_labels_with_state_alignment(htk_label_file)
@@ -553,7 +481,6 @@ class NNDurationPredictor(SUtteranceProcessor):
 
         ## replace the markers in template with the relevant values:
 
-
         for (placeholder, value) in [('__INSERT_PATH_TO_OSSIAN_HERE__', ossian_root),
                                      ('__INSERT_LANGUAGE_HERE__', self.voice_resources.lang),
                                      ('__INSERT_SPEAKER_HERE__', self.voice_resources.speaker),
@@ -655,6 +582,7 @@ class NNAcousticPredictor(SUtteranceProcessor):
         super(NNAcousticPredictor, self).__init__()
 
     def verify(self, voice_resources):
+        return None
         self.voice_resources = voice_resources
 
         ## Set path to HTS binaries from voice resources:
@@ -719,7 +647,6 @@ class NNAcousticPredictor(SUtteranceProcessor):
             assert quantity > 0
 
         ## replace the markers in template with the relevant values:
-
 
         for (placeholder, value) in [('__INSERT_PATH_TO_OSSIAN_HERE__', ossian_root),
                                      ('__INSERT_LANGUAGE_HERE__', self.voice_resources.lang),
@@ -848,7 +775,6 @@ def wavelet_manipulation(sequence, std_scaling_factors, scale_distance=0.5, num_
     #    self.scale_distance = float(self.config.get('scale_distance',0.5))
     #    self.num_octaves = int(self.config.get('num_octaves', 12))
 
-
     # capetown wavelet package setup
     s0 = 2  # first scale in number of frames
     dj = scale_distance  # distance of bands in octaves
@@ -864,7 +790,6 @@ def wavelet_manipulation(sequence, std_scaling_factors, scale_distance=0.5, num_
     print np.shape(wavelet_matrix)
 
     # wavelet_matrix = wavelet_matrix.getdata()
-
 
     scales = np.transpose(wavelet_matrix)
     print np.shape(scales)
@@ -883,7 +808,6 @@ def wavelet_manipulation(sequence, std_scaling_factors, scale_distance=0.5, num_
     print np.std(norm_scales, axis=0)
 
     #    norm_scales *= np.array(std_scaling_factors)
-
 
     # sys.exit(np.shape(norm_scales))
     denormed = (norm_scales * stds) + means

@@ -1,0 +1,5 @@
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_DUR/tensorflow/models/* /root/Ossian/voices//cn/toy_cn_corpus/naive_01_nn.cn/processors/duration_predictor
+
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_DUR/tensorflow/stats/input_249_MINMAX_425.norm /root/Ossian/voices//cn/toy_cn_corpus/naive_01_nn.cn/processors/duration_predictor
+
+cp ./train/cn/speakers/toy_cn_corpus/naive_01_nn.cn/dnn_training_DUR/tensorflow/stats/output_249_MINMAX_187.norm /root/Ossian/voices//cn/toy_cn_corpus/naive_01_nn.cn/processors/duration_predictor
