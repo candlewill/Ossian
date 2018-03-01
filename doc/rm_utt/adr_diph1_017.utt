@@ -1,0 +1,273 @@
+<utt text="La acel restaurant avem asigurată masa." status="OK" waveform="/root/Ossian/corpus/rm/speakers/rss_toy_demo/wav/adr_diph1_017.wav" utterance_name="adr_diph1_017" processors_used=",word_splitter,segment_adder,word_vector_tagger,feature_dumper,acoustic_feature_extractor,aligner,pause_predictor,phrase_maker" vsm_d1_PADDING="1.09769720432" vsm_d2_PADDING="0.0232070769957" vsm_d3_PADDING="0.0410680923534" vsm_d4_PADDING="0.00146492964732" vsm_d5_PADDING="0.00177026870906" vsm_d6_PADDING="-6.74762495409e-05" vsm_d7_PADDING="6.66533271941e-18" vsm_d8_PADDING="0.00420632963432" vsm_d9_PADDING="-0.000829273951238" vsm_d10_PADDING="-0.000365343114342" acoustic_stream_names="mgc,lf0,bap" acoustic_stream_dims="60,1,5" start="0" end="2535" has_silence="yes">
+  <token text="_END_" token_class="_END_" safetext="_END_" start="0" end="85" has_silence="yes" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="0" end="85">
+      <state start="0" end="5"/>
+      <state start="5" end="10"/>
+      <state start="10" end="15"/>
+      <state start="15" end="20"/>
+      <state start="20" end="85"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="La" token_class="word" safetext="_LATINCAPITALLETTERL_a" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" start="85" end="145" has_silence="no" phrase_start="True" phrase_end="False">
+      <segment pronunciation="l" start="85" end="115">
+        <state start="85" end="90"/>
+        <state start="90" end="95"/>
+        <state start="95" end="100"/>
+        <state start="100" end="110"/>
+        <state start="110" end="115"/>
+      </segment>
+      <segment pronunciation="a" start="115" end="145">
+        <state start="115" end="125"/>
+        <state start="125" end="130"/>
+        <state start="130" end="135"/>
+        <state start="135" end="140"/>
+        <state start="140" end="145"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="acel" token_class="word" safetext="acel" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" start="145" end="500" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="a" start="145" end="240">
+        <state start="145" end="150"/>
+        <state start="150" end="155"/>
+        <state start="155" end="160"/>
+        <state start="160" end="235"/>
+        <state start="235" end="240"/>
+      </segment>
+      <segment pronunciation="c" start="240" end="375">
+        <state start="240" end="265"/>
+        <state start="265" end="285"/>
+        <state start="285" end="300"/>
+        <state start="300" end="355"/>
+        <state start="355" end="375"/>
+      </segment>
+      <segment pronunciation="e" start="375" end="415">
+        <state start="375" end="395"/>
+        <state start="395" end="400"/>
+        <state start="400" end="405"/>
+        <state start="405" end="410"/>
+        <state start="410" end="415"/>
+      </segment>
+      <segment pronunciation="l" start="415" end="500">
+        <state start="415" end="420"/>
+        <state start="420" end="440"/>
+        <state start="440" end="490"/>
+        <state start="490" end="495"/>
+        <state start="495" end="500"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="restaurant" token_class="word" safetext="restaurant" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" start="500" end="1105" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="r" start="500" end="545">
+        <state start="500" end="505"/>
+        <state start="505" end="515"/>
+        <state start="515" end="530"/>
+        <state start="530" end="540"/>
+        <state start="540" end="545"/>
+      </segment>
+      <segment pronunciation="e" start="545" end="595">
+        <state start="545" end="550"/>
+        <state start="550" end="570"/>
+        <state start="570" end="575"/>
+        <state start="575" end="580"/>
+        <state start="580" end="595"/>
+      </segment>
+      <segment pronunciation="s" start="595" end="695">
+        <state start="595" end="610"/>
+        <state start="610" end="630"/>
+        <state start="630" end="660"/>
+        <state start="660" end="690"/>
+        <state start="690" end="695"/>
+      </segment>
+      <segment pronunciation="t" start="695" end="735">
+        <state start="695" end="700"/>
+        <state start="700" end="705"/>
+        <state start="705" end="715"/>
+        <state start="715" end="725"/>
+        <state start="725" end="735"/>
+      </segment>
+      <segment pronunciation="a" start="735" end="845">
+        <state start="735" end="740"/>
+        <state start="740" end="745"/>
+        <state start="745" end="760"/>
+        <state start="760" end="840"/>
+        <state start="840" end="845"/>
+      </segment>
+      <segment pronunciation="u" start="845" end="870">
+        <state start="845" end="850"/>
+        <state start="850" end="855"/>
+        <state start="855" end="860"/>
+        <state start="860" end="865"/>
+        <state start="865" end="870"/>
+      </segment>
+      <segment pronunciation="r" start="870" end="905">
+        <state start="870" end="880"/>
+        <state start="880" end="885"/>
+        <state start="885" end="890"/>
+        <state start="890" end="895"/>
+        <state start="895" end="905"/>
+      </segment>
+      <segment pronunciation="a" start="905" end="1000">
+        <state start="905" end="910"/>
+        <state start="910" end="940"/>
+        <state start="940" end="945"/>
+        <state start="945" end="975"/>
+        <state start="975" end="1000"/>
+      </segment>
+      <segment pronunciation="n" start="1000" end="1070">
+        <state start="1000" end="1015"/>
+        <state start="1015" end="1020"/>
+        <state start="1020" end="1030"/>
+        <state start="1030" end="1035"/>
+        <state start="1035" end="1070"/>
+      </segment>
+      <segment pronunciation="t" start="1070" end="1105">
+        <state start="1070" end="1075"/>
+        <state start="1075" end="1085"/>
+        <state start="1085" end="1090"/>
+        <state start="1090" end="1100"/>
+        <state start="1100" end="1105"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="avem" token_class="word" safetext="avem" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" start="1105" end="1370" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="a" start="1105" end="1175">
+        <state start="1105" end="1110"/>
+        <state start="1110" end="1120"/>
+        <state start="1120" end="1130"/>
+        <state start="1130" end="1160"/>
+        <state start="1160" end="1175"/>
+      </segment>
+      <segment pronunciation="v" start="1175" end="1265">
+        <state start="1175" end="1195"/>
+        <state start="1195" end="1215"/>
+        <state start="1215" end="1230"/>
+        <state start="1230" end="1250"/>
+        <state start="1250" end="1265"/>
+      </segment>
+      <segment pronunciation="e" start="1265" end="1295">
+        <state start="1265" end="1270"/>
+        <state start="1270" end="1280"/>
+        <state start="1280" end="1285"/>
+        <state start="1285" end="1290"/>
+        <state start="1290" end="1295"/>
+      </segment>
+      <segment pronunciation="m" start="1295" end="1370">
+        <state start="1295" end="1305"/>
+        <state start="1305" end="1315"/>
+        <state start="1315" end="1355"/>
+        <state start="1355" end="1360"/>
+        <state start="1360" end="1370"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="asigurată" token_class="word" safetext="asigurat_LATINSMALLLETTERAWITHBREVE_" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" start="1370" end="1970" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="a" start="1370" end="1430">
+        <state start="1370" end="1375"/>
+        <state start="1375" end="1385"/>
+        <state start="1385" end="1405"/>
+        <state start="1405" end="1410"/>
+        <state start="1410" end="1430"/>
+      </segment>
+      <segment pronunciation="s" start="1430" end="1545">
+        <state start="1430" end="1450"/>
+        <state start="1450" end="1475"/>
+        <state start="1475" end="1510"/>
+        <state start="1510" end="1525"/>
+        <state start="1525" end="1545"/>
+      </segment>
+      <segment pronunciation="i" start="1545" end="1580">
+        <state start="1545" end="1550"/>
+        <state start="1550" end="1555"/>
+        <state start="1555" end="1560"/>
+        <state start="1560" end="1575"/>
+        <state start="1575" end="1580"/>
+      </segment>
+      <segment pronunciation="g" start="1580" end="1635">
+        <state start="1580" end="1615"/>
+        <state start="1615" end="1620"/>
+        <state start="1620" end="1625"/>
+        <state start="1625" end="1630"/>
+        <state start="1630" end="1635"/>
+      </segment>
+      <segment pronunciation="u" start="1635" end="1685">
+        <state start="1635" end="1640"/>
+        <state start="1640" end="1645"/>
+        <state start="1645" end="1650"/>
+        <state start="1650" end="1680"/>
+        <state start="1680" end="1685"/>
+      </segment>
+      <segment pronunciation="r" start="1685" end="1725">
+        <state start="1685" end="1700"/>
+        <state start="1700" end="1705"/>
+        <state start="1705" end="1715"/>
+        <state start="1715" end="1720"/>
+        <state start="1720" end="1725"/>
+      </segment>
+      <segment pronunciation="a" start="1725" end="1825">
+        <state start="1725" end="1730"/>
+        <state start="1730" end="1750"/>
+        <state start="1750" end="1780"/>
+        <state start="1780" end="1795"/>
+        <state start="1795" end="1825"/>
+      </segment>
+      <segment pronunciation="t" start="1825" end="1920">
+        <state start="1825" end="1865"/>
+        <state start="1865" end="1895"/>
+        <state start="1895" end="1905"/>
+        <state start="1905" end="1915"/>
+        <state start="1915" end="1920"/>
+      </segment>
+      <segment pronunciation="_LATINSMALLLETTERAWITHBREVE_" start="1920" end="1970">
+        <state start="1920" end="1925"/>
+        <state start="1925" end="1930"/>
+        <state start="1930" end="1935"/>
+        <state start="1935" end="1940"/>
+        <state start="1940" end="1970"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="masa" token_class="word" safetext="masa" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" start="1970" end="2390" has_silence="no" phrase_start="False" phrase_end="True">
+      <segment pronunciation="m" start="1970" end="2060">
+        <state start="1970" end="1985"/>
+        <state start="1985" end="2000"/>
+        <state start="2000" end="2040"/>
+        <state start="2040" end="2045"/>
+        <state start="2045" end="2060"/>
+      </segment>
+      <segment pronunciation="a" start="2060" end="2140">
+        <state start="2060" end="2070"/>
+        <state start="2070" end="2075"/>
+        <state start="2075" end="2125"/>
+        <state start="2125" end="2130"/>
+        <state start="2130" end="2140"/>
+      </segment>
+      <segment pronunciation="s" start="2140" end="2315">
+        <state start="2140" end="2190"/>
+        <state start="2190" end="2235"/>
+        <state start="2235" end="2280"/>
+        <state start="2280" end="2300"/>
+        <state start="2300" end="2315"/>
+      </segment>
+      <segment pronunciation="a" start="2315" end="2390">
+        <state start="2315" end="2340"/>
+        <state start="2340" end="2345"/>
+        <state start="2345" end="2350"/>
+        <state start="2350" end="2355"/>
+        <state start="2355" end="2390"/>
+      </segment>
+    </token>
+  </phrase>
+  <token text="." token_class="punctuation" safetext="_FULLSTOP_" start="2390" end="2535" has_silence="yes" silence_predicted="1" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="2390" end="2535">
+      <state start="2390" end="2410"/>
+      <state start="2410" end="2435"/>
+      <state start="2435" end="2500"/>
+      <state start="2500" end="2530"/>
+      <state start="2530" end="2535"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="_END_" token_class="_END_" safetext="_END_" phrase_start="True" phrase_end="True"/>
+  </phrase>
+</utt>

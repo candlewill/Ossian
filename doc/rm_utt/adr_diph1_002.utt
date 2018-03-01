@@ -1,0 +1,49 @@
+<utt text="Ea era tot timpul pe minge." status="OK" waveform="/root/Ossian/corpus/rm/speakers/rss_toy_demo/wav/adr_diph1_002.wav" utterance_name="adr_diph1_002" processors_used=",word_splitter,segment_adder,word_vector_tagger,feature_dumper,acoustic_feature_extractor,pause_predictor,phrase_maker" vsm_d1_PADDING="1.09769720432" vsm_d2_PADDING="0.0232070769957" vsm_d3_PADDING="0.0410680923534" vsm_d4_PADDING="0.00146492964732" vsm_d5_PADDING="0.00177026870906" vsm_d6_PADDING="-6.74762495409e-05" vsm_d7_PADDING="6.66533271941e-18" vsm_d8_PADDING="0.00420632963432" vsm_d9_PADDING="-0.000829273951238" vsm_d10_PADDING="-0.000365343114342" acoustic_stream_names="mgc,lf0,bap" acoustic_stream_dims="60,1,5">
+  <phrase>
+    <token text="_END_" token_class="_END_" safetext="_END_" phrase_start="True" phrase_end="False"/>
+    <token text="Ea" token_class="word" safetext="_LATINCAPITALLETTERE_a" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" phrase_start="False" phrase_end="False">
+      <segment pronunciation="e"/>
+      <segment pronunciation="a"/>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="era" token_class="word" safetext="era" vsm_d1="1.16356115606" vsm_d2="0.227540982663" vsm_d3="-0.147302669257" vsm_d4="0.200578829529" vsm_d5="-0.149458933125" vsm_d6="0.000848570382654" vsm_d7="-0.235702260396" vsm_d8="0.0718938825775" vsm_d9="-0.0699376391466" vsm_d10="0.00183978997969" phrase_start="False" phrase_end="False">
+      <segment pronunciation="e"/>
+      <segment pronunciation="r"/>
+      <segment pronunciation="a"/>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="tot" token_class="word" safetext="tot" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" phrase_start="False" phrase_end="False">
+      <segment pronunciation="t"/>
+      <segment pronunciation="o"/>
+      <segment pronunciation="t"/>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="timpul" token_class="word" safetext="timpul" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" phrase_start="False" phrase_end="False">
+      <segment pronunciation="t"/>
+      <segment pronunciation="i"/>
+      <segment pronunciation="m"/>
+      <segment pronunciation="p"/>
+      <segment pronunciation="u"/>
+      <segment pronunciation="l"/>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="pe" token_class="word" safetext="pe" vsm_d1="1.18790017197" vsm_d2="0.00451708128117" vsm_d3="-0.0150275837057" vsm_d4="0.0089992989485" vsm_d5="-0.0683565091269" vsm_d6="0.000306376623534" vsm_d7="9.09850734402e-18" vsm_d8="-0.072739422872" vsm_d9="0.0518675949819" vsm_d10="0.118396500945" phrase_start="False" phrase_end="False">
+      <segment pronunciation="p"/>
+      <segment pronunciation="e"/>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="minge" token_class="word" safetext="minge" vsm_d1="0.901409979425" vsm_d2="0.00372551511236" vsm_d3="0.0632215422531" vsm_d4="0.0991836358923" vsm_d5="0.0145190327354" vsm_d6="-0.00760018972904" vsm_d7="-1.71406465668e-17" vsm_d8="-0.0166857258203" vsm_d9="0.0134385815358" vsm_d10="-0.055605647518" phrase_start="False" phrase_end="True">
+      <segment pronunciation="m"/>
+      <segment pronunciation="i"/>
+      <segment pronunciation="n"/>
+      <segment pronunciation="g"/>
+      <segment pronunciation="e"/>
+    </token>
+  </phrase>
+  <token text="." token_class="punctuation" safetext="_FULLSTOP_" silence_predicted="1" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil"/>
+  </token>
+  <phrase>
+    <token text="_END_" token_class="_END_" safetext="_END_" phrase_start="True" phrase_end="True"/>
+  </phrase>
+</utt>

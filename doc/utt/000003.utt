@@ -1,0 +1,100 @@
+<utt text="我们 没有 接到 报告啊 ？" status="OK" waveform="/root/Ossian/corpus/cn/speakers/toy_cn_corpus/wav/000003.wav" utterance_name="000003" processors_used=",word_splitter,segment_adder,word_vector_tagger,feature_dumper,acoustic_feature_extractor,aligner,pause_predictor,phrase_maker,duration_data_maker,labelmaker,duration_predictor,dnn_labelmaker" vsm_d1_PADDING="0.171869036882" vsm_d2_PADDING="0.116516677755" vsm_d3_PADDING="0.0150450350583" vsm_d4_PADDING="0.00991496670712" vsm_d5_PADDING="0.00289022679795" vsm_d6_PADDING="0.00793495754707" vsm_d7_PADDING="0.00664693800343" vsm_d8_PADDING="0.0055340243224" vsm_d9_PADDING="0.00435860752627" vsm_d10_PADDING="0.00553991924331" acoustic_stream_names="mgc,lf0,bap" acoustic_stream_dims="60,1,1" start="0" end="2670" has_silence="yes">
+  <token text="_END_" token_class="_END_" safetext="_END_" start="0" end="485" has_silence="yes" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="0" end="485">
+      <state start="0" end="5"/>
+      <state start="5" end="10"/>
+      <state start="10" end="15"/>
+      <state start="15" end="20"/>
+      <state start="20" end="485"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="我们" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXTWOONEONE__CJKUNIFIEDIDEOGRAPHFOUREEC_" vsm_d1="0.743235571694" vsm_d2="-0.120322574748" vsm_d3="0.000852626958092" vsm_d4="-0.00953804298007" vsm_d5="0.000903446690248" vsm_d6="0.0028206026794" vsm_d7="0.00393148346372" vsm_d8="0.00769036319902" vsm_d9="-0.0148555186" vsm_d10="0.000410546273743" start="485" end="780" has_silence="no" phrase_start="True" phrase_end="False">
+      <segment pronunciation="_woTHREE_" start="485" end="640">
+        <state start="485" end="490"/>
+        <state start="490" end="500"/>
+        <state start="500" end="505"/>
+        <state start="505" end="540"/>
+        <state start="540" end="640"/>
+      </segment>
+      <segment pronunciation="_men_" start="640" end="780">
+        <state start="640" end="645"/>
+        <state start="645" end="650"/>
+        <state start="650" end="655"/>
+        <state start="655" end="730"/>
+        <state start="730" end="780"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="没有" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXCAONE__CJKUNIFIEDIDEOGRAPHSIXSEVENZERONINE_" vsm_d1="0.327958073355" vsm_d2="0.454655711616" vsm_d3="-0.00769166303787" vsm_d4="-0.00484813968577" vsm_d5="0.00504248640757" vsm_d6="0.000959141495667" vsm_d7="-0.00206932791522" vsm_d8="0.00103859796276" vsm_d9="-0.00203121551009" vsm_d10="-0.000901169075345" start="780" end="1160" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="_meiTWO_" start="780" end="950">
+        <state start="780" end="785"/>
+        <state start="785" end="800"/>
+        <state start="800" end="805"/>
+        <state start="805" end="875"/>
+        <state start="875" end="950"/>
+      </segment>
+      <segment pronunciation="_youTHREE_" start="950" end="1160">
+        <state start="950" end="955"/>
+        <state start="955" end="960"/>
+        <state start="960" end="1010"/>
+        <state start="1010" end="1140"/>
+        <state start="1140" end="1160"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="接到" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXTHREEAFIVE__CJKUNIFIEDIDEOGRAPHFIVETWOTHREEZERO_" vsm_d1="0.0011802199183" vsm_d2="0.00407955347099" vsm_d3="-0.000779120787902" vsm_d4="-0.000277621431441" vsm_d5="0.0005672737845" vsm_d6="0.000360540026789" vsm_d7="-0.000197874299099" vsm_d8="0.000146324241827" vsm_d9="-0.00031144264544" vsm_d10="0.000174096273025" start="1160" end="1465" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="_jieONE_" start="1160" end="1375">
+        <state start="1160" end="1175"/>
+        <state start="1175" end="1195"/>
+        <state start="1195" end="1280"/>
+        <state start="1280" end="1325"/>
+        <state start="1325" end="1375"/>
+      </segment>
+      <segment pronunciation="_daoFOUR_" start="1375" end="1465">
+        <state start="1375" end="1380"/>
+        <state start="1380" end="1400"/>
+        <state start="1400" end="1410"/>
+        <state start="1410" end="1430"/>
+        <state start="1430" end="1465"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="报告啊" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXTWOAFIVE__CJKUNIFIEDIDEOGRAPHFIVEFOURFOURA__CJKUNIFIEDIDEOGRAPHFIVEFIVEFOURA_" vsm_d1="1.33275520242e-05" vsm_d2="6.43808923287e-05" vsm_d3="0.060324784269" vsm_d4="5.24262138213e-05" vsm_d5="-0.0888051428649" vsm_d6="0.978321886432" vsm_d7="0.00122378841207" vsm_d8="0.000762743610128" vsm_d9="-0.00387101984223" vsm_d10="0.000124503851679" start="1465" end="2235" has_silence="no" phrase_start="False" phrase_end="True">
+      <segment pronunciation="_baoFOUR_" start="1465" end="1670">
+        <state start="1465" end="1470"/>
+        <state start="1470" end="1545"/>
+        <state start="1545" end="1560"/>
+        <state start="1560" end="1645"/>
+        <state start="1645" end="1670"/>
+      </segment>
+      <segment pronunciation="_gaoFOUR_" start="1670" end="1750">
+        <state start="1670" end="1705"/>
+        <state start="1705" end="1730"/>
+        <state start="1730" end="1735"/>
+        <state start="1735" end="1745"/>
+        <state start="1745" end="1750"/>
+      </segment>
+      <segment pronunciation="_a_" start="1750" end="2235">
+        <state start="1750" end="1935"/>
+        <state start="1935" end="2115"/>
+        <state start="2115" end="2155"/>
+        <state start="2155" end="2185"/>
+        <state start="2185" end="2235"/>
+      </segment>
+    </token>
+  </phrase>
+  <token text=" " token_class="space" safetext="_SPACE_" start="2235" end="2670" has_silence="yes" silence_predicted="1" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="2235" end="2670">
+      <state start="2235" end="2240"/>
+      <state start="2240" end="2245"/>
+      <state start="2245" end="2315"/>
+      <state start="2315" end="2325"/>
+      <state start="2325" end="2670"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="？" token_class="punctuation" safetext="_FULLWIDTHQUESTIONMARK_" silence_predicted="0" phrase_start="True" phrase_end="False"/>
+    <token text="_END_" token_class="_END_" safetext="_END_" phrase_start="False" phrase_end="True"/>
+  </phrase>
+</utt>

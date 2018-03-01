@@ -1,0 +1,86 @@
+<utt text="挨着 书桌 ，地面上 摆放着 锅碗 瓢盆 ，以及 堆放的 一些 杂货 。" status="alignment_failed" waveform="/root/Ossian/corpus/cn/speakers/toy_cn_corpus/wav/000004.wav" utterance_name="000004" processors_used=",word_splitter,segment_adder,word_vector_tagger,feature_dumper,acoustic_feature_extractor,aligner" vsm_d1_PADDING="0.171869036882" vsm_d2_PADDING="0.116516677755" vsm_d3_PADDING="0.0150450350583" vsm_d4_PADDING="0.00991496670712" vsm_d5_PADDING="0.00289022679795" vsm_d6_PADDING="0.00793495754707" vsm_d7_PADDING="0.00664693800343" vsm_d8_PADDING="0.0055340243224" vsm_d9_PADDING="0.00435860752627" vsm_d10_PADDING="0.00553991924331" acoustic_stream_names="mgc,lf0,bap" acoustic_stream_dims="60,1,1">
+  <token text="_END_" token_class="_END_" safetext="_END_">
+    <segment pronunciation="_PROB_PAUSE_"/>
+  </token>
+  <token text="挨着" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXTHREETWOEIGHT__CJKUNIFIEDIDEOGRAPHSEVENSEVENFOURZERO_" vsm_d1="0.986095337086" vsm_d2="-0.159796585531" vsm_d3="9.96891620976e-05" vsm_d4="-0.0122152179566" vsm_d5="-0.000162790894949" vsm_d6="-0.000129375547966" vsm_d7="0.0001171789445" vsm_d8="-0.00241136802064" vsm_d9="-0.0112749463824" vsm_d10="-0.0010487224977">
+    <segment pronunciation="_aiONE_"/>
+    <segment pronunciation="_zhe_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="书桌" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFOURESIXSIX__CJKUNIFIEDIDEOGRAPHSIXEIGHTFOURC_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_shuONE_"/>
+    <segment pronunciation="_zhuoONE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="，地面上" token_class="word" safetext="_FULLWIDTHCOMMA__CJKUNIFIEDIDEOGRAPHFIVESEVENTHREEZERO__CJKUNIFIEDIDEOGRAPHNINESEVENSIXTWO__CJKUNIFIEDIDEOGRAPHFOUREZEROA_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_FULLWIDTHCOMMA_"/>
+    <segment pronunciation="_diFOUR_"/>
+    <segment pronunciation="_mianFOUR_"/>
+    <segment pronunciation="_shangFOUR_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="摆放着" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXFOURFOURSIX__CJKUNIFIEDIDEOGRAPHSIXFIVETHREEE__CJKUNIFIEDIDEOGRAPHSEVENSEVENFOURZERO_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_baiTHREE_"/>
+    <segment pronunciation="_fangFOUR_"/>
+    <segment pronunciation="_zhe_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="锅碗" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHNINEFIVEZEROFIVE__CJKUNIFIEDIDEOGRAPHSEVENEIGHTNINESEVEN_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_guoONE_"/>
+    <segment pronunciation="_wanTHREE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="瓢盆" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSEVENFOURETWO__CJKUNIFIEDIDEOGRAPHSEVENSIXCSIX_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_piaoTWO_"/>
+    <segment pronunciation="_penTWO_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="，以及" token_class="word" safetext="_FULLWIDTHCOMMA__CJKUNIFIEDIDEOGRAPHFOUREEFIVE__CJKUNIFIEDIDEOGRAPHFIVETHREECA_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_FULLWIDTHCOMMA_"/>
+    <segment pronunciation="_yiTHREE_"/>
+    <segment pronunciation="_jiTWO_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="堆放的" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFIVEEIGHTZEROSIX__CJKUNIFIEDIDEOGRAPHSIXFIVETHREEE__CJKUNIFIEDIDEOGRAPHSEVENSIXEIGHTFOUR_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_duiONE_"/>
+    <segment pronunciation="_fangFOUR_"/>
+    <segment pronunciation="_de_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="一些" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFOUREZEROZERO__CJKUNIFIEDIDEOGRAPHFOURENINEB_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_yiONE_"/>
+    <segment pronunciation="_xieONE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="杂货" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXSEVENFOURTWO__CJKUNIFIEDIDEOGRAPHEIGHTDTWOSEVEN_" vsm_d1="0.1597876373" vsm_d2="0.986256277475" vsm_d3="-0.0147859021513" vsm_d4="-0.0030863417338" vsm_d5="0.0097355919487" vsm_d6="0.00137114639932" vsm_d7="-0.00420776051898" vsm_d8="-0.000568011461465" vsm_d9="0.000507764957593" vsm_d10="-0.00485705029323">
+    <segment pronunciation="_zaTWO_"/>
+    <segment pronunciation="_huoFOUR_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="。" token_class="punctuation" safetext="_IDEOGRAPHICFULLSTOP_">
+    <segment pronunciation="_PROB_PAUSE_"/>
+  </token>
+  <token text="_END_" token_class="_END_" safetext="_END_">
+    <segment pronunciation="_PROB_PAUSE_"/>
+  </token>
+</utt>

@@ -1,0 +1,94 @@
+<utt text="两位 好心的 路人 ，赶紧 跳入 河中 救人 ，几分钟后 ，向某 被捞 上岸 。" status="alignment_failed" waveform="/root/Ossian/corpus/cn/speakers/toy_cn_corpus/wav/000005.wav" utterance_name="000005" processors_used=",word_splitter,segment_adder,word_vector_tagger,feature_dumper,acoustic_feature_extractor,aligner" vsm_d1_PADDING="0.171869036882" vsm_d2_PADDING="0.116516677755" vsm_d3_PADDING="0.0150450350583" vsm_d4_PADDING="0.00991496670712" vsm_d5_PADDING="0.00289022679795" vsm_d6_PADDING="0.00793495754707" vsm_d7_PADDING="0.00664693800343" vsm_d8_PADDING="0.0055340243224" vsm_d9_PADDING="0.00435860752627" vsm_d10_PADDING="0.00553991924331" acoustic_stream_names="mgc,lf0,bap" acoustic_stream_dims="60,1,1">
+  <token text="_END_" token_class="_END_" safetext="_END_">
+    <segment pronunciation="_PROB_PAUSE_"/>
+  </token>
+  <token text="两位" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFOURETWOFOUR__CJKUNIFIEDIDEOGRAPHFOURFFOURD_" vsm_d1="0.493531096446" vsm_d2="-0.079981754622" vsm_d3="5.04364405885e-05" vsm_d4="-0.00618519868059" vsm_d5="-8.25255908263e-05" vsm_d6="-6.59860728086e-05" vsm_d7="6.03557423384e-05" vsm_d8="-0.00123572148943" vsm_d9="-0.00578768538791" vsm_d10="-0.000538891801177">
+    <segment pronunciation="_liangTHREE_"/>
+    <segment pronunciation="_weiFOUR_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="好心的" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFIVENINESEVEND__CJKUNIFIEDIDEOGRAPHFIVEFCTHREE__CJKUNIFIEDIDEOGRAPHSEVENSIXEIGHTFOUR_" vsm_d1="-1.49616184429e-11" vsm_d2="-1.89742378742e-11" vsm_d3="4.5739787613e-07" vsm_d4="-0.000105597738109" vsm_d5="0.000138859824172" vsm_d6="9.62544474867e-05" vsm_d7="-0.000952074219681" vsm_d8="-0.00488605758669" vsm_d9="-0.00380090427789" vsm_d10="0.00164029538044">
+    <segment pronunciation="_haoTHREE_"/>
+    <segment pronunciation="_xinONE_"/>
+    <segment pronunciation="_de_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="路人" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHEIGHTDEF__CJKUNIFIEDIDEOGRAPHFOUREBA_" vsm_d1="1.45225049209e-15" vsm_d2="2.49976206363e-15" vsm_d3="-2.65904763527e-09" vsm_d4="-1.06062374571e-08" vsm_d5="-2.96777508512e-08" vsm_d6="1.16095144723e-07" vsm_d7="8.27228121284e-08" vsm_d8="1.30684170751e-07" vsm_d9="5.50804293275e-07" vsm_d10="1.0761402146e-06">
+    <segment pronunciation="_luFOUR_"/>
+    <segment pronunciation="_renTWO_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="，赶紧" token_class="word" safetext="_FULLWIDTHCOMMA__CJKUNIFIEDIDEOGRAPHEIGHTDSEVENSIX__CJKUNIFIEDIDEOGRAPHSEVENDTWOSEVEN_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_FULLWIDTHCOMMA_"/>
+    <segment pronunciation="_ganTHREE_"/>
+    <segment pronunciation="_jinTHREE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="跳入" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHEIGHTDFTHREE__CJKUNIFIEDIDEOGRAPHFIVEONESIXFIVE_" vsm_d1="3.65462809519e-16" vsm_d2="5.22257142011e-15" vsm_d3="-2.59781448579e-09" vsm_d4="1.49954384886e-08" vsm_d5="-2.55614182366e-08" vsm_d6="2.02847650472e-08" vsm_d7="5.84029212808e-08" vsm_d8="8.33958295352e-07" vsm_d9="5.51338176725e-07" vsm_d10="-3.78420380335e-07">
+    <segment pronunciation="_tiaoFOUR_"/>
+    <segment pronunciation="_ruFOUR_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="河中" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXCBTHREE__CJKUNIFIEDIDEOGRAPHFOURETWOD_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_heTWO_"/>
+    <segment pronunciation="_zhongONE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="救人" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXFIVEFIVEONE__CJKUNIFIEDIDEOGRAPHFOUREBA_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_jiuFOUR_"/>
+    <segment pronunciation="_renTWO_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="，几分钟后" token_class="word" safetext="_FULLWIDTHCOMMA__CJKUNIFIEDIDEOGRAPHFIVEONEEZERO__CJKUNIFIEDIDEOGRAPHFIVETWOZEROSIX__CJKUNIFIEDIDEOGRAPHNINEFOURNINEF__CJKUNIFIEDIDEOGRAPHFIVEFOURZEROE_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_FULLWIDTHCOMMA_"/>
+    <segment pronunciation="_jiTHREE_"/>
+    <segment pronunciation="_fenONE_"/>
+    <segment pronunciation="_zhongONE_"/>
+    <segment pronunciation="_houFOUR_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="，向某" token_class="word" safetext="_FULLWIDTHCOMMA__CJKUNIFIEDIDEOGRAPHFIVEFOURONEONE__CJKUNIFIEDIDEOGRAPHSIXSEVENDZERO_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_FULLWIDTHCOMMA_"/>
+    <segment pronunciation="_xiangFOUR_"/>
+    <segment pronunciation="_mouTHREE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="被捞" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHEIGHTEIGHTAB__CJKUNIFIEDIDEOGRAPHSIXTHREEFIVEE_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0">
+    <segment pronunciation="_beiFOUR_"/>
+    <segment pronunciation="_laoONE_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="上岸" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFOUREZEROA__CJKUNIFIEDIDEOGRAPHFIVECBEIGHT_" vsm_d1="0.1597876373" vsm_d2="0.986256277475" vsm_d3="-0.0147859021513" vsm_d4="-0.0030863417338" vsm_d5="0.0097355919487" vsm_d6="0.00137114639932" vsm_d7="-0.00420776051898" vsm_d8="-0.000568011461465" vsm_d9="0.000507764957593" vsm_d10="-0.00485705029323">
+    <segment pronunciation="_shangFOUR_"/>
+    <segment pronunciation="_anFOUR_"/>
+  </token>
+  <token text=" " token_class="space" safetext="_SPACE_">
+    <segment pronunciation="_POSS_PAUSE_"/>
+  </token>
+  <token text="。" token_class="punctuation" safetext="_IDEOGRAPHICFULLSTOP_">
+    <segment pronunciation="_PROB_PAUSE_"/>
+  </token>
+  <token text="_END_" token_class="_END_" safetext="_END_">
+    <segment pronunciation="_PROB_PAUSE_"/>
+  </token>
+</utt>

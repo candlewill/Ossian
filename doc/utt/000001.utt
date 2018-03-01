@@ -1,0 +1,137 @@
+<utt text="四是 建立 规划 实施 监测 机制 。" status="OK" waveform="/root/Ossian/corpus/cn/speakers/toy_cn_corpus/wav/000001.wav" utterance_name="000001" processors_used=",word_splitter,segment_adder,word_vector_tagger,feature_dumper,acoustic_feature_extractor,aligner,pause_predictor,phrase_maker,duration_data_maker,labelmaker,duration_predictor,dnn_labelmaker" vsm_d1_PADDING="0.171869036882" vsm_d2_PADDING="0.116516677755" vsm_d3_PADDING="0.0150450350583" vsm_d4_PADDING="0.00991496670712" vsm_d5_PADDING="0.00289022679795" vsm_d6_PADDING="0.00793495754707" vsm_d7_PADDING="0.00664693800343" vsm_d8_PADDING="0.0055340243224" vsm_d9_PADDING="0.00435860752627" vsm_d10_PADDING="0.00553991924331" acoustic_stream_names="mgc,lf0,bap" acoustic_stream_dims="60,1,1" start="0" end="3995" has_silence="yes">
+  <token text="_END_" token_class="_END_" safetext="_END_" start="0" end="155" has_silence="yes" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="0" end="155">
+      <state start="0" end="60"/>
+      <state start="60" end="80"/>
+      <state start="80" end="90"/>
+      <state start="90" end="145"/>
+      <state start="145" end="155"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="四是" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFIVESIXDB__CJKUNIFIEDIDEOGRAPHSIXSIXTWOF_" vsm_d1="0.993883637936" vsm_d2="-0.161141811813" vsm_d3="0.00010994255424" vsm_d4="-0.0135769331015" vsm_d5="-0.000185454739555" vsm_d6="-0.000147542869828" vsm_d7="0.000165121731813" vsm_d8="-0.00297713478984" vsm_d9="-0.0142030526367" vsm_d10="-0.00131184469446" start="155" end="1055" has_silence="no" phrase_start="True" phrase_end="True">
+      <segment pronunciation="_siFOUR_" start="155" end="720">
+        <state start="155" end="395"/>
+        <state start="395" end="480"/>
+        <state start="480" end="525"/>
+        <state start="525" end="625"/>
+        <state start="625" end="720"/>
+      </segment>
+      <segment pronunciation="_shiFOUR_" start="720" end="1055">
+        <state start="720" end="725"/>
+        <state start="725" end="750"/>
+        <state start="750" end="755"/>
+        <state start="755" end="915"/>
+        <state start="915" end="1055"/>
+      </segment>
+    </token>
+  </phrase>
+  <token text=" " token_class="space" safetext="_SPACE_" start="1055" end="1205" has_silence="yes" silence_predicted="0" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="1055" end="1205">
+      <state start="1055" end="1130"/>
+      <state start="1130" end="1140"/>
+      <state start="1140" end="1150"/>
+      <state start="1150" end="1185"/>
+      <state start="1185" end="1205"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="建立" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFIVEEFA__CJKUNIFIEDIDEOGRAPHSEVENACB_" vsm_d1="-1.08375345802e-14" vsm_d2="-7.8721774536e-14" vsm_d3="1.41325534943e-07" vsm_d4="-7.30959131886e-07" vsm_d5="-1.11556894643e-06" vsm_d6="1.16773725333e-05" vsm_d7="1.17936856509e-05" vsm_d8="-3.56187324083e-05" vsm_d9="-6.11243906248e-05" vsm_d10="-2.02652238536e-05" start="1205" end="1615" has_silence="no" phrase_start="True" phrase_end="False">
+      <segment pronunciation="_jianFOUR_" start="1205" end="1400">
+        <state start="1205" end="1240"/>
+        <state start="1240" end="1275"/>
+        <state start="1275" end="1290"/>
+        <state start="1290" end="1300"/>
+        <state start="1300" end="1400"/>
+      </segment>
+      <segment pronunciation="_liFOUR_" start="1400" end="1615">
+        <state start="1400" end="1460"/>
+        <state start="1460" end="1465"/>
+        <state start="1465" end="1495"/>
+        <state start="1495" end="1510"/>
+        <state start="1510" end="1615"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="规划" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHEIGHTNINECFOUR__CJKUNIFIEDIDEOGRAPHFIVETWOONETWO_" vsm_d1="8.73273611978e-15" vsm_d2="7.21547912007e-14" vsm_d3="4.6100179989e-07" vsm_d4="-7.25672239209e-07" vsm_d5="-3.3409063014e-07" vsm_d6="3.71869117118e-06" vsm_d7="-7.12617223699e-06" vsm_d8="-5.64355225506e-06" vsm_d9="9.51428216815e-06" vsm_d10="-1.98477025513e-05" start="1615" end="2000" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="_guiONE_" start="1615" end="1830">
+        <state start="1615" end="1620"/>
+        <state start="1620" end="1630"/>
+        <state start="1630" end="1645"/>
+        <state start="1645" end="1720"/>
+        <state start="1720" end="1830"/>
+      </segment>
+      <segment pronunciation="_huaFOUR_" start="1830" end="2000">
+        <state start="1830" end="1835"/>
+        <state start="1835" end="1885"/>
+        <state start="1885" end="1895"/>
+        <state start="1895" end="1925"/>
+        <state start="1925" end="2000"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="实施" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHFIVEBNINEE__CJKUNIFIEDIDEOGRAPHSIXFIVEBD_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0" start="2000" end="2405" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="_shiTWO_" start="2000" end="2025">
+        <state start="2000" end="2005"/>
+        <state start="2005" end="2010"/>
+        <state start="2010" end="2015"/>
+        <state start="2015" end="2020"/>
+        <state start="2020" end="2025"/>
+      </segment>
+      <segment pronunciation="_shiONE_" start="2025" end="2405">
+        <state start="2025" end="2120"/>
+        <state start="2120" end="2125"/>
+        <state start="2125" end="2350"/>
+        <state start="2350" end="2390"/>
+        <state start="2390" end="2405"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="监测" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSEVENSIXDONE__CJKUNIFIEDIDEOGRAPHSIXDFOURB_" vsm_d1="0.0" vsm_d2="0.0" vsm_d3="0.0" vsm_d4="0.0" vsm_d5="0.0" vsm_d6="0.0" vsm_d7="0.0" vsm_d8="0.0" vsm_d9="0.0" vsm_d10="0.0" start="2405" end="2805" has_silence="no" phrase_start="False" phrase_end="False">
+      <segment pronunciation="_jianONE_" start="2405" end="2780">
+        <state start="2405" end="2640"/>
+        <state start="2640" end="2645"/>
+        <state start="2645" end="2700"/>
+        <state start="2700" end="2735"/>
+        <state start="2735" end="2780"/>
+      </segment>
+      <segment pronunciation="_ceFOUR_" start="2780" end="2805">
+        <state start="2780" end="2785"/>
+        <state start="2785" end="2790"/>
+        <state start="2790" end="2795"/>
+        <state start="2795" end="2800"/>
+        <state start="2800" end="2805"/>
+      </segment>
+    </token>
+    <token text=" " token_class="space" safetext="_SPACE_" silence_predicted="0" phrase_start="False" phrase_end="False"/>
+    <token text="机制" token_class="word" safetext="_CJKUNIFIEDIDEOGRAPHSIXSEVENTHREEA__CJKUNIFIEDIDEOGRAPHFIVETWOTHREESIX_" vsm_d1="0.1597876373" vsm_d2="0.986256277475" vsm_d3="-0.0147859021513" vsm_d4="-0.0030863417338" vsm_d5="0.0097355919487" vsm_d6="0.00137114639932" vsm_d7="-0.00420776051898" vsm_d8="-0.000568011461465" vsm_d9="0.000507764957593" vsm_d10="-0.00485705029323" start="2805" end="3495" has_silence="no" phrase_start="False" phrase_end="True">
+      <segment pronunciation="_jiONE_" start="2805" end="3185">
+        <state start="2805" end="3035"/>
+        <state start="3035" end="3075"/>
+        <state start="3075" end="3100"/>
+        <state start="3100" end="3180"/>
+        <state start="3180" end="3185"/>
+      </segment>
+      <segment pronunciation="_zhiFOUR_" start="3185" end="3495">
+        <state start="3185" end="3190"/>
+        <state start="3190" end="3225"/>
+        <state start="3225" end="3230"/>
+        <state start="3230" end="3360"/>
+        <state start="3360" end="3495"/>
+      </segment>
+    </token>
+  </phrase>
+  <token text=" " token_class="space" safetext="_SPACE_" start="3495" end="3995" has_silence="yes" silence_predicted="1" phrase_start="False" phrase_end="False">
+    <segment pronunciation="sil" start="3495" end="3995">
+      <state start="3495" end="3575"/>
+      <state start="3575" end="3580"/>
+      <state start="3580" end="3600"/>
+      <state start="3600" end="3685"/>
+      <state start="3685" end="3995"/>
+    </segment>
+  </token>
+  <phrase>
+    <token text="。" token_class="punctuation" safetext="_IDEOGRAPHICFULLSTOP_" silence_predicted="0" phrase_start="True" phrase_end="False"/>
+    <token text="_END_" token_class="_END_" safetext="_END_" phrase_start="False" phrase_end="True"/>
+  </phrase>
+</utt>
